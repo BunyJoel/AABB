@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.library.mapper.LibBookTypeMapper">
+    
+    <resultMap type="LibBookType" id="LibBookTypeResult">
+        <result property="typeId"    column="type_id"    />
+        <result property="typeName"    column="type_name"    />
+        <result property="typeTime"    column="type_time"    />
+    </resultMap>
+
+    <sql id="selectLibBookTypeVo">
+        select type_id, type_name, type_time from lib_book_type
+    </sql>
+
+    <select id="selectLibBookTypeList" parameterType="LibBookType" resultMap="LibBookTypeResult">
+        <include refid="selectLibBookTypeVo"/>
+        <where>  
+            <if test="typeName != null  and typeName != ''"> and type_name like concat('%', #{typeName}, '%')</if>
+            <if test="params.beginTypeTime != null and params.beginTypeTime != '' and params.endTypeTime != null and params.endTypeTime != ''"> and type_time between #{params.beginTypeTime} and #{params.endTypeTime}</if>
+        </where>
+    </select>
+    
+    <select id="selectLibBookTypeByTypeId" parameterType="Long" resultMap="LibBookTypeResult">
+        <include refid="selectLibBookTypeVo"/>
+        where type_id = #{typeId}
+    </select>
+        
+    <insert id="insertLibBookType" parameterType="LibBookType">
+        insert into lib_book_type
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="typeId != null">type_id,</if>
+            <if test="typeName != null and typeName != ''">type_name,</if>
+            <if test="typeTime != null">type_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="typeId != null">#{typeId},</if>
+            <if test="typeName != null and typeName != ''">#{typeName},</if>
+            <if test="typeTime != null">#{typeTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateLibBookType" parameterType="LibBookType">
+        update lib_book_type
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="typeName != null and typeName != ''">type_name = #{typeName},</if>
+            <if test="typeTime != null">type_time = #{typeTime},</if>
+        </trim>
+        where type_id = #{typeId}
+    </update>
+
+    <delete id="deleteLibBookTypeByTypeId" parameterType="Long">
+        delete from lib_book_type where type_id = #{typeId}
+    </delete>
+
+    <delete id="deleteLibBookTypeByTypeIds" parameterType="String">
+        delete from lib_book_type where type_id in 
+        <foreach item="typeId" collection="array" open="(" separator="," close=")">
+            #{typeId}
+        </foreach>
+    </delete>
+</mapper>

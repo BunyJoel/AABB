@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.library_book.mapper.LibBookMapper">
+    
+    <resultMap type="LibBook" id="LibBookResult">
+        <result property="bookId"    column="book_id"    />
+        <result property="bookName"    column="book_name"    />
+        <result property="typeId"    column="type_id"    />
+        <result property="publisherId"    column="publisher_id"    />
+        <result property="bookAuther"    column="book_auther"    />
+        <result property="bookIssn"    column="book_issn"    />
+        <result property="bookPic"    column="book_pic"    />
+        <result property="bookInfo"    column="book_info"    />
+    </resultMap>
+
+    <sql id="selectLibBookVo">
+        select book_id, book_name, type_id, publisher_id, book_auther, book_issn, book_pic, book_info from lib_book
+    </sql>
+
+    <select id="selectLibBookList" parameterType="LibBook" resultMap="LibBookResult">
+        <include refid="selectLibBookVo"/>
+        <where>  
+            <if test="bookName != null  and bookName != ''"> and book_name like concat('%', #{bookName}, '%')</if>
+            <if test="typeId != null "> and type_id = #{typeId}</if>
+            <if test="publisherId != null "> and publisher_id = #{publisherId}</if>
+            <if test="bookAuther != null  and bookAuther != ''"> and book_auther = #{bookAuther}</if>
+            <if test="bookIssn != null  and bookIssn != ''"> and book_issn = #{bookIssn}</if>
+            <if test="bookPic != null  and bookPic != ''"> and book_pic = #{bookPic}</if>
+            <if test="bookInfo != null  and bookInfo != ''"> and book_info = #{bookInfo}</if>
+        </where>
+    </select>
+    
+    <select id="selectLibBookByBookId" parameterType="Long" resultMap="LibBookResult">
+        <include refid="selectLibBookVo"/>
+        where book_id = #{bookId}
+    </select>
+        
+    <insert id="insertLibBook" parameterType="LibBook" useGeneratedKeys="true" keyProperty="bookId">
+        insert into lib_book
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bookName != null and bookName != ''">book_name,</if>
+            <if test="typeId != null">type_id,</if>
+            <if test="publisherId != null">publisher_id,</if>
+            <if test="bookAuther != null and bookAuther != ''">book_auther,</if>
+            <if test="bookIssn != null and bookIssn != ''">book_issn,</if>
+            <if test="bookPic != null">book_pic,</if>
+            <if test="bookInfo != null">book_info,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="bookName != null and bookName != ''">#{bookName},</if>
+            <if test="typeId != null">#{typeId},</if>
+            <if test="publisherId != null">#{publisherId},</if>
+            <if test="bookAuther != null and bookAuther != ''">#{bookAuther},</if>
+            <if test="bookIssn != null and bookIssn != ''">#{bookIssn},</if>
+            <if test="bookPic != null">#{bookPic},</if>
+            <if test="bookInfo != null">#{bookInfo},</if>
+         </trim>
+    </insert>
+
+    <update id="updateLibBook" parameterType="LibBook">
+        update lib_book
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="bookName != null and bookName != ''">book_name = #{bookName},</if>
+            <if test="typeId != null">type_id = #{typeId},</if>
+            <if test="publisherId != null">publisher_id = #{publisherId},</if>
+            <if test="bookAuther != null and bookAuther != ''">book_auther = #{bookAuther},</if>
+            <if test="bookIssn != null and bookIssn != ''">book_issn = #{bookIssn},</if>
+            <if test="bookPic != null">book_pic = #{bookPic},</if>
+            <if test="bookInfo != null">book_info = #{bookInfo},</if>
+        </trim>
+        where book_id = #{bookId}
+    </update>
+
+    <delete id="deleteLibBookByBookId" parameterType="Long">
+        delete from lib_book where book_id = #{bookId}
+    </delete>
+
+    <delete id="deleteLibBookByBookIds" parameterType="String">
+        delete from lib_book where book_id in 
+        <foreach item="bookId" collection="array" open="(" separator="," close=")">
+            #{bookId}
+        </foreach>
+    </delete>
+</mapper>
