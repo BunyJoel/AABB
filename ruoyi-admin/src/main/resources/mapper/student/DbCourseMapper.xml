@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.student.mapper.DbCourseMapper">
+    
+    <resultMap type="DbCourse" id="DbCourseResult">
+        <result property="couId"    column="cou_id"    />
+        <result property="couName"    column="cou_name"    />
+        <result property="teaId"    column="tea_id"    />
+        <result property="couCredit"    column="cou_credit"    />
+        <result property="couHour"    column="cou_hour"    />
+        <result property="couWay"    column="cou_way"    />
+    </resultMap>
+
+    <sql id="selectDbCourseVo">
+        select cou_id, cou_name, tea_id, cou_credit, cou_hour, cou_way from db_course
+    </sql>
+
+    <select id="selectDbCourseList" parameterType="DbCourse" resultMap="DbCourseResult">
+        <include refid="selectDbCourseVo"/>
+        <where>  
+            <if test="couName != null  and couName != ''"> and cou_name like concat('%', #{couName}, '%')</if>
+            <if test="teaId != null "> and tea_id like concat('%', #{teaId}, '%')</if>
+            <if test="couCredit != null "> and cou_credit = #{couCredit}</if>
+            <if test="couHour != null "> and cou_hour = #{couHour}</if>
+            <if test="couWay != null  and couWay != ''"> and cou_way = #{couWay}</if>
+        </where>
+    </select>
+    
+    <select id="selectDbCourseByCouId" parameterType="Long" resultMap="DbCourseResult">
+        <include refid="selectDbCourseVo"/>
+        where cou_id = #{couId}
+    </select>
+        
+    <insert id="insertDbCourse" parameterType="DbCourse" useGeneratedKeys="true" keyProperty="couId">
+        insert into db_course
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="couName != null and couName != ''">cou_name,</if>
+            <if test="teaId != null">tea_id,</if>
+            <if test="couCredit != null">cou_credit,</if>
+            <if test="couHour != null">cou_hour,</if>
+            <if test="couWay != null and couWay != ''">cou_way,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="couName != null and couName != ''">#{couName},</if>
+            <if test="teaId != null">#{teaId},</if>
+            <if test="couCredit != null">#{couCredit},</if>
+            <if test="couHour != null">#{couHour},</if>
+            <if test="couWay != null and couWay != ''">#{couWay},</if>
+         </trim>
+    </insert>
+
+    <update id="updateDbCourse" parameterType="DbCourse">
+        update db_course
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="couName != null and couName != ''">cou_name = #{couName},</if>
+            <if test="teaId != null">tea_id = #{teaId},</if>
+            <if test="couCredit != null">cou_credit = #{couCredit},</if>
+            <if test="couHour != null">cou_hour = #{couHour},</if>
+            <if test="couWay != null and couWay != ''">cou_way = #{couWay},</if>
+        </trim>
+        where cou_id = #{couId}
+    </update>
+
+    <delete id="deleteDbCourseByCouId" parameterType="Long">
+        delete from db_course where cou_id = #{couId}
+    </delete>
+
+    <delete id="deleteDbCourseByCouIds" parameterType="String">
+        delete from db_course where cou_id in 
+        <foreach item="couId" collection="array" open="(" separator="," close=")">
+            #{couId}
+        </foreach>
+    </delete>
+</mapper>

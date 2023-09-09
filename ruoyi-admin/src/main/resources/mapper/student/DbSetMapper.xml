@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.student.mapper.DbSetMapper">
+    
+    <resultMap type="DbSet" id="DbSetResult">
+        <result property="setId"    column="set_id"    />
+        <result property="couId"    column="cou_id"    />
+        <result property="majId"    column="maj_id"    />
+    </resultMap>
+
+    <sql id="selectDbSetVo">
+        select set_id, cou_id, maj_id from db_set
+    </sql>
+
+    <select id="selectDbSetList" parameterType="DbSet" resultMap="DbSetResult">
+        <include refid="selectDbSetVo"/>
+        <where>  
+            <if test="couId != null "> and cou_id like concat('%', #{couId}, '%')</if>
+            <if test="majId != null "> and maj_id like concat('%', #{majId}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectDbSetBySetId" parameterType="Long" resultMap="DbSetResult">
+        <include refid="selectDbSetVo"/>
+        where set_id = #{setId}
+    </select>
+        
+    <insert id="insertDbSet" parameterType="DbSet" useGeneratedKeys="true" keyProperty="setId">
+        insert into db_set
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="couId != null">cou_id,</if>
+            <if test="majId != null">maj_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="couId != null">#{couId},</if>
+            <if test="majId != null">#{majId},</if>
+         </trim>
+    </insert>
+
+    <update id="updateDbSet" parameterType="DbSet">
+        update db_set
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="couId != null">cou_id = #{couId},</if>
+            <if test="majId != null">maj_id = #{majId},</if>
+        </trim>
+        where set_id = #{setId}
+    </update>
+
+    <delete id="deleteDbSetBySetId" parameterType="Long">
+        delete from db_set where set_id = #{setId}
+    </delete>
+
+    <delete id="deleteDbSetBySetIds" parameterType="String">
+        delete from db_set where set_id in 
+        <foreach item="setId" collection="array" open="(" separator="," close=")">
+            #{setId}
+        </foreach>
+    </delete>
+</mapper>

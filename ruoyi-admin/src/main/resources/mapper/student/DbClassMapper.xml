@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.student.mapper.DbClassMapper">
+    
+    <resultMap type="DbClass" id="DbClassResult">
+        <result property="clsId"    column="cls_id"    />
+        <result property="clsName"    column="cls_name"    />
+        <result property="majId"    column="maj_id"    />
+    </resultMap>
+
+    <sql id="selectDbClassVo">
+        select cls_id, cls_name, maj_id from db_class
+    </sql>
+
+    <select id="selectDbClassList" parameterType="DbClass" resultMap="DbClassResult">
+        <include refid="selectDbClassVo"/>
+        <where>  
+            <if test="clsName != null  and clsName != ''"> and cls_name like concat('%', #{clsName}, '%')</if>
+            <if test="majId != null "> and maj_id like concat('%', #{majId}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectDbClassByClsId" parameterType="Long" resultMap="DbClassResult">
+        <include refid="selectDbClassVo"/>
+        where cls_id = #{clsId}
+    </select>
+        
+    <insert id="insertDbClass" parameterType="DbClass" useGeneratedKeys="true" keyProperty="clsId">
+        insert into db_class
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="clsName != null and clsName != ''">cls_name,</if>
+            <if test="majId != null">maj_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="clsName != null and clsName != ''">#{clsName},</if>
+            <if test="majId != null">#{majId},</if>
+         </trim>
+    </insert>
+
+    <update id="updateDbClass" parameterType="DbClass">
+        update db_class
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="clsName != null and clsName != ''">cls_name = #{clsName},</if>
+            <if test="majId != null">maj_id = #{majId},</if>
+        </trim>
+        where cls_id = #{clsId}
+    </update>
+
+    <delete id="deleteDbClassByClsId" parameterType="Long">
+        delete from db_class where cls_id = #{clsId}
+    </delete>
+
+    <delete id="deleteDbClassByClsIds" parameterType="String">
+        delete from db_class where cls_id in 
+        <foreach item="clsId" collection="array" open="(" separator="," close=")">
+            #{clsId}
+        </foreach>
+    </delete>
+</mapper>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.student.mapper.dbcollegeMapper">
+    
+    <resultMap type="dbcollege" id="dbcollegeResult">
+        <result property="collId"    column="coll_id"    />
+        <result property="collName"    column="coll_name"    />
+    </resultMap>
+
+    <sql id="selectdbcollegeVo">
+        select coll_id, coll_name from db_college
+    </sql>
+
+    <select id="selectdbcollegeList" parameterType="dbcollege" resultMap="dbcollegeResult">
+        <include refid="selectdbcollegeVo"/>
+        <where>  
+            <if test="collName != null  and collName != ''"> and coll_name like concat('%', #{collName}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectdbcollegeByCollId" parameterType="Long" resultMap="dbcollegeResult">
+        <include refid="selectdbcollegeVo"/>
+        where coll_id = #{collId}
+    </select>
+        
+    <insert id="insertdbcollege" parameterType="dbcollege" useGeneratedKeys="true" keyProperty="collId">
+        insert into db_college
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="collName != null and collName != ''">coll_name,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="collName != null and collName != ''">#{collName},</if>
+         </trim>
+    </insert>
+
+    <update id="updatedbcollege" parameterType="dbcollege">
+        update db_college
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="collName != null and collName != ''">coll_name = #{collName},</if>
+        </trim>
+        where coll_id = #{collId}
+    </update>
+
+    <delete id="deletedbcollegeByCollId" parameterType="Long">
+        delete from db_college where coll_id = #{collId}
+    </delete>
+
+    <delete id="deletedbcollegeByCollIds" parameterType="String">
+        delete from db_college where coll_id in
+        <foreach item="collId" collection="array" open="(" separator="," close=")">
+            #{collId}
+        </foreach>
+    </delete>
+</mapper>

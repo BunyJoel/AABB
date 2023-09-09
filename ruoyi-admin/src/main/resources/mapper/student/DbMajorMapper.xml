@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.student.mapper.DbMajorMapper">
+    
+    <resultMap type="DbMajor" id="DbMajorResult">
+        <result property="majId"    column="maj_id"    />
+        <result property="majName"    column="maj_name"    />
+        <result property="collId"    column="coll_id"    />
+        <result property="collName"  column="coll_name"/>
+    </resultMap>
+
+    <sql id="selectDbMajorVo">
+        select m.maj_id, m.maj_name, c.coll_name from db_major m inner join db_college c on m.coll_id = c.coll_id
+    </sql>
+
+    <select id="selectDbMajorList" parameterType="DbMajor" resultMap="DbMajorResult">
+        <include refid="selectDbMajorVo"/>
+        <where>  
+            <if test="majName != null  and majName != ''"> and m.maj_name like concat('%', #{majName}, '%')</if>
+            <if test="collId != null "> and m.coll_id like concat('%', #{collId}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectDbMajorByMajId" parameterType="Long" resultMap="DbMajorResult">
+        <include refid="selectDbMajorVo"/>
+        where m.maj_id = #{majId}
+    </select>
+        
+    <insert id="insertDbMajor" parameterType="DbMajor" useGeneratedKeys="true" keyProperty="majId">
+        insert into db_major
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="majName != null and majName != ''">maj_name,</if>
+            <if test="collId != null">coll_id,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="majName != null and majName != ''">#{majName},</if>
+            <if test="collId != null">#{collId},</if>
+         </trim>
+    </insert>
+
+    <update id="updateDbMajor" parameterType="DbMajor">
+        update db_major
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="majName != null and majName != ''">maj_name = #{majName},</if>
+            <if test="collId != null">coll_id = #{collId},</if>
+        </trim>
+        where maj_id = #{majId}
+    </update>
+
+    <delete id="deleteDbMajorByMajId" parameterType="Long">
+        delete from db_major where maj_id = #{majId}
+    </delete>
+
+    <delete id="deleteDbMajorByMajIds" parameterType="String">
+        delete from db_major where maj_id in 
+        <foreach item="majId" collection="array" open="(" separator="," close=")">
+            #{majId}
+        </foreach>
+    </delete>
+</mapper>
