@@ -1,5 +1,14 @@
 import request from '@/utils/request'
 
+// 查询所有的课程列表
+export function listAllCourse(query) {
+  return request({
+    url: '/student/course/listall',
+    method: 'get',
+    params: query
+  })
+}
+
 // 查询课程管理列表
 export function listCourse(query) {
   return request({

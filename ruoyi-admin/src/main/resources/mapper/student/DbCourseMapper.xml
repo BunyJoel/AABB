@@ -11,26 +11,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="couCredit"    column="cou_credit"    />
         <result property="couHour"    column="cou_hour"    />
         <result property="couWay"    column="cou_way"    />
+        <result property="teaName"   column="tea_name"/>
     </resultMap>
 
     <sql id="selectDbCourseVo">
-        select cou_id, cou_name, tea_id, cou_credit, cou_hour, cou_way from db_course
+        select c.cou_id, c.cou_name, t.tea_name, c.cou_credit, c.cou_hour, c.cou_way from db_course c inner join db_teacher t on c.tea_id = t.tea_id
     </sql>
 
     <select id="selectDbCourseList" parameterType="DbCourse" resultMap="DbCourseResult">
         <include refid="selectDbCourseVo"/>
         <where>  
-            <if test="couName != null  and couName != ''"> and cou_name like concat('%', #{couName}, '%')</if>
-            <if test="teaId != null "> and tea_id like concat('%', #{teaId}, '%')</if>
-            <if test="couCredit != null "> and cou_credit = #{couCredit}</if>
-            <if test="couHour != null "> and cou_hour = #{couHour}</if>
-            <if test="couWay != null  and couWay != ''"> and cou_way = #{couWay}</if>
+            <if test="couName != null  and couName != ''"> and c.cou_name like concat('%', #{couName}, '%')</if>
+            <if test="teaId != null "> and t.tea_name like concat('%', #{teaId}, '%')</if>
+            <if test="couCredit != null "> and c.cou_credit = #{couCredit}</if>
+            <if test="couHour != null "> and c.cou_hour = #{couHour}</if>
+            <if test="couWay != null  and couWay != ''"> and c.cou_way = #{couWay}</if>
         </where>
     </select>
     
     <select id="selectDbCourseByCouId" parameterType="Long" resultMap="DbCourseResult">
         <include refid="selectDbCourseVo"/>
-        where cou_id = #{couId}
+        where c.cou_id = #{couId}
     </select>
         
     <insert id="insertDbCourse" parameterType="DbCourse" useGeneratedKeys="true" keyProperty="couId">

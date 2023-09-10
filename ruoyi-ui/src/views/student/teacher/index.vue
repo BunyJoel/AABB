@@ -19,13 +19,20 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="学院id" prop="collId">
-        <el-input
+      <el-form-item label="所属学院" prop="collId">
+   <!--     <el-input
           v-model="queryParams.collId"
           placeholder="请输入学院id"
           clearable
           @keyup.enter.native="handleQuery"
-        />
+        /> -->
+        <el-select v-model="queryParams.collId" placeholder="请选择所属学院" clearable>
+          <el-option
+          v-for="item in collegeList"
+          :key="item.collId"
+          :label="item.collName"
+          :value="item.collId"></el-option>
+          </el-select>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>

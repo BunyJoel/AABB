@@ -8,23 +8,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="clsId"    column="cls_id"    />
         <result property="clsName"    column="cls_name"    />
         <result property="majId"    column="maj_id"    />
+        <result property="majName"    column="maj_name"    />
     </resultMap>
 
     <sql id="selectDbClassVo">
-        select cls_id, cls_name, maj_id from db_class
+        select c.cls_id, c.cls_name, m.maj_name from db_class c inner join db_major m on c.maj_id = m.maj_id
     </sql>
 
     <select id="selectDbClassList" parameterType="DbClass" resultMap="DbClassResult">
         <include refid="selectDbClassVo"/>
         <where>  
-            <if test="clsName != null  and clsName != ''"> and cls_name like concat('%', #{clsName}, '%')</if>
-            <if test="majId != null "> and maj_id like concat('%', #{majId}, '%')</if>
+            <if test="clsName != null  and clsName != ''"> and c.cls_name like concat('%', #{clsName}, '%')</if>
+            <if test="majId != null "> and c.maj_id like concat('%', #{majId}, '%')</if>
         </where>
     </select>
     
     <select id="selectDbClassByClsId" parameterType="Long" resultMap="DbClassResult">
         <include refid="selectDbClassVo"/>
-        where cls_id = #{clsId}
+        where c.cls_id = #{clsId}
     </select>
         
     <insert id="insertDbClass" parameterType="DbClass" useGeneratedKeys="true" keyProperty="clsId">

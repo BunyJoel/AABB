@@ -9,13 +9,20 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="专业id" prop="majId">
-        <el-input
+      <el-form-item label="所属专业" prop="majId">
+  <!--      <el-input
           v-model="queryParams.majId"
           placeholder="请输入专业id"
           clearable
           @keyup.enter.native="handleQuery"
-        />
+        /> -->
+        <el-select v-model="queryParams.majId" placeholder="请选择所属专业">
+          <el-option
+          v-for="item in majorList"
+          :key="item.majId"
+          :label="item.majName"
+          :value="item.majId"></el-option>
+        </el-select>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
@@ -73,7 +80,7 @@
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="班级id" align="center" prop="clsId" />
       <el-table-column label="班级名称" align="center" prop="clsName" />
-      <el-table-column label="专业id" align="center" prop="majId" />
+      <el-table-column label="所属专业" align="center" prop="majName" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -93,7 +100,7 @@
         </template>
       </el-table-column>
     </el-table>
-    
+
     <pagination
       v-show="total>0"
       :total="total"
@@ -108,8 +115,15 @@
         <el-form-item label="班级名称" prop="clsName">
           <el-input v-model="form.clsName" placeholder="请输入班级名称" />
         </el-form-item>
-        <el-form-item label="专业id" prop="majId">
-          <el-input v-model="form.majId" placeholder="请输入专业id" />
+        <el-form-item label="所属专业" prop="majId">
+         <!-- <el-input v-model="form.majId" placeholder="请输入专业id" /> -->
+         <el-select v-model="form.majId" placeholder="请选择所属专业">
+           <el-option
+           v-for="item in majorList"
+           :key="item.majId"
+           :label="item.majName"
+           :value="item.majId"></el-option>
+         </el-select>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -122,6 +136,8 @@
 
 <script>
 import { listClass, getClass, delClass, addClass, updateClass } from "@/api/student/class";
+//导入类型接口，查询所有专业的方法
+import { listAllMajor } from "@/api/student/major";
 
 export default {
   name: "Class",
@@ -141,6 +157,8 @@ export default {
       total: 0,
       // 班级管理表格数据
       classList: [],
+      //专业数据
+      majorList: [],
       // 弹出层标题
       title: "",
       // 是否显示弹出层
@@ -167,8 +185,14 @@ export default {
   },
   created() {
     this.getList();
+    this.getAllMajor();
   },
   methods: {
+    getAllMajor(){
+      listAllMajor().then(response =>{
+        this.majorList = response;
+      })
+    },
     /** 查询班级管理列表 */
     getList() {
       this.loading = true;

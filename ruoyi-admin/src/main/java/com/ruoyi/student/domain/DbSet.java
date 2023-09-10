@@ -20,12 +20,17 @@ public class DbSet extends BaseEntity
     private Long setId;
 
     /** 课程id */
-    @Excel(name = "课程id")
+//    @Excel(name = "课程id")
     private Long couId;
 
     /** 班级id */
-    @Excel(name = "班级id")
+//    @Excel(name = "班级id")
     private Long majId;
+
+    @Excel(name = "班级名称")
+    private String couName;
+    @Excel(name = "专业名称")
+    private String majName;
 
     public void setSetId(Long setId) 
     {
@@ -53,6 +58,22 @@ public class DbSet extends BaseEntity
     public Long getMajId() 
     {
         return majId;
+    }
+
+    public String getCouName() {
+        return couName;
+    }
+
+    public void setCouName(String couName) {
+        this.couName = couName;
+    }
+
+    public String getMajName() {
+        return majName;
+    }
+
+    public void setMajName(String majName) {
+        this.majName = majName;
     }
 
     @Override

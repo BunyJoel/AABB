@@ -1,5 +1,14 @@
 import request from '@/utils/request'
 
+// 查询所有的教师列表
+export function listAllTeacher(query) {
+  return request({
+    url: '/student/teacher/listall',
+    method: 'get',
+    params: query
+  })
+}
+
 // 查询教师管理列表
 export function listTeacher(query) {
   return request({

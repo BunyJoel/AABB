@@ -8,23 +8,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="setId"    column="set_id"    />
         <result property="couId"    column="cou_id"    />
         <result property="majId"    column="maj_id"    />
+        <result property="couName"    column="cou_name"    />
+        <result property="majName"    column="maj_name"    />
     </resultMap>
 
     <sql id="selectDbSetVo">
-        select set_id, cou_id, maj_id from db_set
+        select s.set_id, c.cou_name, m.maj_name from db_set s inner join db_course c on s.cou_id = c.cou_id inner join db_major m on s.maj_id = m.maj_id
     </sql>
 
     <select id="selectDbSetList" parameterType="DbSet" resultMap="DbSetResult">
         <include refid="selectDbSetVo"/>
         <where>  
-            <if test="couId != null "> and cou_id like concat('%', #{couId}, '%')</if>
-            <if test="majId != null "> and maj_id like concat('%', #{majId}, '%')</if>
+            <if test="couId != null "> and c.cou_id like concat('%', #{couId}, '%')</if>
+            <if test="majId != null "> and m.maj_id like concat('%', #{majId}, '%')</if>
         </where>
     </select>
     
     <select id="selectDbSetBySetId" parameterType="Long" resultMap="DbSetResult">
         <include refid="selectDbSetVo"/>
-        where set_id = #{setId}
+        where s.set_id = #{setId}
     </select>
         
     <insert id="insertDbSet" parameterType="DbSet" useGeneratedKeys="true" keyProperty="setId">

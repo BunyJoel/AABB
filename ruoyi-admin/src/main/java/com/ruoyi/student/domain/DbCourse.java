@@ -25,7 +25,7 @@ public class DbCourse extends BaseEntity
     private String couName;
 
     /** 教师id */
-    @Excel(name = "教师id")
+//    @Excel(name = "教师id")
     private Long teaId;
 
     /** 学分 */
@@ -39,6 +39,9 @@ public class DbCourse extends BaseEntity
     /** 考核方式 */
     @Excel(name = "考核方式")
     private String couWay;
+
+    @Excel(name = "教师名称")
+    private String teaName;
 
     public void setCouId(Long couId) 
     {
@@ -93,6 +96,14 @@ public class DbCourse extends BaseEntity
     public String getCouWay() 
     {
         return couWay;
+    }
+
+    public String getTeaName() {
+        return teaName;
+    }
+
+    public void setTeaName(String teaName) {
+        this.teaName = teaName;
     }
 
     @Override

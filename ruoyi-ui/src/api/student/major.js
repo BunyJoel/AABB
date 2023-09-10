@@ -1,5 +1,12 @@
 import request from '@/utils/request'
 
+export function listAllMajor(query) {
+  return request({
+    url: '/student/major/listall',
+    method: 'get',
+    params: query
+  })
+}
 
 // 查询专业管理列表
 export function listMajor(query) {

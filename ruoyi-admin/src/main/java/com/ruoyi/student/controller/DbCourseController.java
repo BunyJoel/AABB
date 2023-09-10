@@ -34,6 +34,19 @@ public class DbCourseController extends BaseController
     @Autowired
     private IDbCourseService dbCourseService;
 
+
+    /**
+     * 查询所有的课程
+     */
+    @PreAuthorize("@ss.hasPermi('student:course:list')")
+    @GetMapping("/listall")
+    public List<DbCourse> listAll()
+    {
+        DbCourse dbCourse = new DbCourse();
+        List<DbCourse> list = dbCourseService.selectDbCourseList(dbCourse);
+        return list;
+    }
+
     /**
      * 查询课程管理列表
      */

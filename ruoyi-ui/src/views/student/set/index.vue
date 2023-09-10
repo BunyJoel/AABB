@@ -1,21 +1,35 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-      <el-form-item label="课程id" prop="couId">
-        <el-input
+      <el-form-item label="课程" prop="couId">
+<!--        <el-input
           v-model="queryParams.couId"
           placeholder="请输入课程id"
           clearable
           @keyup.enter.native="handleQuery"
-        />
+        /> -->
+        <el-select v-model="queryParams.couId" placeholder="请选择课程">
+          <el-option
+          v-for="item in courseList"
+          :key="item.couId"
+          :label="item.couName"
+          :value="item.couId"></el-option>
+        </el-select>
       </el-form-item>
-      <el-form-item label="班级id" prop="majId">
-        <el-input
+      <el-form-item label="开设专业" prop="majId">
+     <!--   <el-input
           v-model="queryParams.majId"
           placeholder="请输入班级id"
           clearable
           @keyup.enter.native="handleQuery"
-        />
+        /> -->
+        <el-select v-model="queryParams.majId" placeholder="请选择开设专业">
+          <el-option
+          v-for="item in majorList"
+          :key="item.majId"
+          :label="item.majName"
+          :value="item.majId"></el-option>
+        </el-select>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
@@ -72,8 +86,8 @@
     <el-table v-loading="loading" :data="setList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="编号" align="center" prop="setId" />
-      <el-table-column label="课程id" align="center" prop="couId" />
-      <el-table-column label="班级id" align="center" prop="majId" />
+      <el-table-column label="课程名称" align="center" prop="couName" />
+      <el-table-column label="开设专业" align="center" prop="majName" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -93,7 +107,7 @@
         </template>
       </el-table-column>
     </el-table>
-    
+
     <pagination
       v-show="total>0"
       :total="total"
@@ -106,10 +120,24 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="课程id" prop="couId">
-          <el-input v-model="form.couId" placeholder="请输入课程id" />
+          <!-- <el-input v-model="form.couId" placeholder="请输入课程id" /> -->
+          <el-select v-model="form.couId" placeholder="请选择课程">
+            <el-option
+            v-for="item in courseList"
+            :key="item.couId"
+            :label="item.couName"
+            :value="item.couId"></el-option>
+          </el-select>
         </el-form-item>
-        <el-form-item label="班级id" prop="majId">
-          <el-input v-model="form.majId" placeholder="请输入班级id" />
+        <el-form-item label="开设专业" prop="majId">
+         <!-- <el-input v-model="form.majId" placeholder="请输入班级id" /> -->
+         <el-select v-model="form.majId" placeholder="请选择开设专业">
+           <el-option
+           v-for="item in majorList"
+           :key="item.majId"
+           :label="item.majName"
+           :value="item.majId"></el-option>
+         </el-select>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -122,6 +150,10 @@
 
 <script>
 import { listSet, getSet, delSet, addSet, updateSet } from "@/api/student/set";
+//导入类型接口，查询所有专业的方法
+import { listAllMajor } from "@/api/student/major";
+//导入类型接口，查询所有课程的方法
+import { listAllCourse } from "@/api/student/course";
 
 export default {
   name: "Set",
@@ -141,6 +173,10 @@ export default {
       total: 0,
       // 开发管理表格数据
       setList: [],
+      //课程列
+      courseList: [],
+      //专业列
+      majorList: [],
       // 弹出层标题
       title: "",
       // 是否显示弹出层
@@ -167,8 +203,20 @@ export default {
   },
   created() {
     this.getList();
+    this.getAllCourse();
+    this.getAllMajor();
   },
   methods: {
+    getAllCourse(){
+      listAllCourse().then(response =>{
+        this.courseList = response;
+      })
+    },
+    getAllMajor(){
+      listAllMajor().then(response =>{
+        this.majorList = response;
+      })
+    },
     /** 查询开发管理列表 */
     getList() {
       this.loading = true;

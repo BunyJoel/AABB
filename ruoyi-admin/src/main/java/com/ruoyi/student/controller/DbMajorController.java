@@ -34,16 +34,17 @@ public class DbMajorController extends BaseController
     @Autowired
     private IDbMajorService dbMajorService;
 
-//    /**
-//     * 查询所有的列表
-//     */
-//    @PreAuthorize("@ss.hasPermi('student:major:list')")
-//    @GetMapping("/listall")
-//    public List<DbMajor> listAll()
-//    {
-//        List<DbMajor> list = dbMajorService.selectDbMajorList(null);
-//        return list;
-//    }
+    /**
+     * 查询所有的列表
+     */
+    @PreAuthorize("@ss.hasPermi('student:major:list')")
+    @GetMapping("/listall")
+    public List<DbMajor> listAll()
+    {
+        DbMajor dbMajor = new DbMajor();
+        List<DbMajor> list = dbMajorService.selectDbMajorList(dbMajor);
+        return list;
+    }
 
 
     /**

@@ -34,6 +34,19 @@ public class DbTeacherController extends BaseController
     @Autowired
     private IDbTeacherService dbTeacherService;
 
+
+    /**
+     * 查询所有教师
+     */
+    @PreAuthorize("@ss.hasPermi('student:teacher:list')")
+    @GetMapping("/listall")
+    public List<DbTeacher> listAll()
+    {
+        DbTeacher dbTeacher = new DbTeacher();
+        List<DbTeacher> list = dbTeacherService.selectDbTeacherList(dbTeacher);
+        return list;
+    }
+
     /**
      * 查询教师管理列表
      */

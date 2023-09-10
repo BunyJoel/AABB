@@ -1,5 +1,14 @@
 import request from '@/utils/request'
 
+// 查询所有班级班级管理列表
+export function listAllClass(query) {
+  return request({
+    url: '/student/class/listall',
+    method: 'get',
+    params: query
+  })
+}
+
 // 查询班级管理列表
 export function listClass(query) {
   return request({

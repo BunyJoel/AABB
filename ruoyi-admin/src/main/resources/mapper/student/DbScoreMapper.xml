@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.student.mapper.DbScoreMapper">
+    
+    <resultMap type="DbScore" id="DbScoreResult">
+        <result property="scoId"    column="sco_id"    />
+        <result property="stuNumber"    column="stu_number"    />
+        <result property="stuName"    column="stu_name"    />
+        <result property="couId"    column="cou_id"    />
+        <result property="teaId"    column="tea_id"    />
+        <result property="score"    column="score"    />
+        <result property="gpa"    column="GPA"    />
+        <result property="couName"    column="cou_name"    />
+        <result property="teaName"    column="tea_name"    />
+    </resultMap>
+
+    <sql id="selectDbScoreVo">
+        select sco_id, stu_number, stu_name, cou_name, tea_name, score, GPA from db_score s inner join db_course c on s.cou_id = c.cou_id inner join db_teacher t on s.tea_id = t.tea_id
+    </sql>
+
+    <select id="selectDbScoreList" parameterType="DbScore" resultMap="DbScoreResult">
+        <include refid="selectDbScoreVo"/>
+        <where>  
+            <if test="stuNumber != null  and stuNumber != ''"> and s.stu_number = #{stuNumber}</if>
+            <if test="stuName != null  and stuName != ''"> and s.stu_name like concat('%', #{stuName}, '%')</if>
+            <if test="couId != null "> and s.cou_id = #{couId}</if>
+            <if test="teaId != null "> and s.tea_id = #{teaId}</if>
+        </where>
+    </select>
+    
+    <select id="selectDbScoreByScoId" parameterType="Long" resultMap="DbScoreResult">
+        <include refid="selectDbScoreVo"/>
+        where s.sco_id = #{scoId}
+    </select>
+        
+    <insert id="insertDbScore" parameterType="DbScore" useGeneratedKeys="true" keyProperty="scoId">
+        insert into db_score
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="stuNumber != null">stu_number,</if>
+            <if test="stuName != null">stu_name,</if>
+            <if test="couId != null">cou_id,</if>
+            <if test="teaId != null">tea_id,</if>
+            <if test="score != null">score,</if>
+            <if test="gpa != null">GPA,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="stuNumber != null">#{stuNumber},</if>
+            <if test="stuName != null">#{stuName},</if>
+            <if test="couId != null">#{couId},</if>
+            <if test="teaId != null">#{teaId},</if>
+            <if test="score != null">#{score},</if>
+            <if test="gpa != null">#{gpa},</if>
+         </trim>
+    </insert>
+
+    <update id="updateDbScore" parameterType="DbScore">
+        update db_score
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="stuNumber != null">stu_number = #{stuNumber},</if>
+            <if test="stuName != null">stu_name = #{stuName},</if>
+            <if test="couId != null">cou_id = #{couId},</if>
+            <if test="teaId != null">tea_id = #{teaId},</if>
+            <if test="score != null">score = #{score},</if>
+            <if test="gpa != null">GPA = #{gpa},</if>
+        </trim>
+        where sco_id = #{scoId}
+    </update>
+
+    <delete id="deleteDbScoreByScoId" parameterType="Long">
+        delete from db_score where sco_id = #{scoId}
+    </delete>
+
+    <delete id="deleteDbScoreByScoIds" parameterType="String">
+        delete from db_score where sco_id in 
+        <foreach item="scoId" collection="array" open="(" separator="," close=")">
+            #{scoId}
+        </foreach>
+    </delete>
+</mapper>

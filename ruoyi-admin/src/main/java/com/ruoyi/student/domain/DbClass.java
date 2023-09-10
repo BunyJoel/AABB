@@ -24,8 +24,10 @@ public class DbClass extends BaseEntity
     private String clsName;
 
     /** 专业id */
-    @Excel(name = "专业id")
+//    @Excel(name = "专业id")
     private Long majId;
+
+    private String majName;
 
     public void setClsId(Long clsId) 
     {
@@ -53,6 +55,14 @@ public class DbClass extends BaseEntity
     public Long getMajId() 
     {
         return majId;
+    }
+
+    public String getMajName() {
+        return majName;
+    }
+
+    public void setMajName(String majName) {
+        this.majName = majName;
     }
 
     @Override

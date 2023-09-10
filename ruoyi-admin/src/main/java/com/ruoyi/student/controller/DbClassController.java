@@ -34,6 +34,19 @@ public class DbClassController extends BaseController
     @Autowired
     private IDbClassService dbClassService;
 
+
+    /**
+     * 查询所有的班级
+     */
+    @PreAuthorize("@ss.hasPermi('student:class:list')")
+    @GetMapping("/listall")
+    public List<DbClass> listall()
+    {
+        DbClass dbClass = new DbClass();
+        List<DbClass> list = dbClassService.selectDbClassList(dbClass);
+        return list;
+    }
+
     /**
      * 查询班级管理列表
      */

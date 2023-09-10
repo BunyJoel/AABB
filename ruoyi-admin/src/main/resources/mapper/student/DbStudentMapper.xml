@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.student.mapper.DbStudentMapper">
+    
+    <resultMap type="DbStudent" id="DbStudentResult">
+        <result property="stuNumber"    column="stu_number"    />
+        <result property="stuName"    column="stu_name"    />
+        <result property="clsId"    column="cls_id"    />
+        <result property="stuGender"    column="stu_gender"    />
+        <result property="stuPhone"    column="stu_phone"    />
+        <result property="stuAvg"    column="stu_avg"    />
+        <result property="stuAddress"    column="stu_address"    />
+        <result property="clsName"    column="cls_name"    />
+    </resultMap>
+
+    <sql id="selectDbStudentVo">
+        select s.stu_number, s.stu_name, c.cls_name, s.stu_gender, s.stu_phone, s.stu_avg, s.stu_address from db_student s inner join db_class c on s.cls_id = c.cls_id
+    </sql>
+
+    <select id="selectDbStudentList" parameterType="DbStudent" resultMap="DbStudentResult">
+        <include refid="selectDbStudentVo"/>
+        <where>  
+            <if test="stuNumber != null  and stuNumber != ''"> and s.stu_number = #{stuNumber}</if>
+            <if test="stuName != null  and stuName != ''"> and s.stu_name like concat('%', #{stuName}, '%')</if>
+            <if test="clsId != null "> and c.cls_id = #{clsId}</if>
+            <if test="stuGender != null  and stuGender != ''"> and s.stu_gender = #{stuGender}</if>
+            <if test="stuPhone != null  and stuPhone != ''"> and s.stu_phone = #{stuPhone}</if>
+            <if test="stuAvg != null "> and s.stu_avg = #{stuAvg}</if>
+            <if test="stuAddress != null  and stuAddress != ''"> and s.stu_address like concat('%', #{stuAddress}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectDbStudentByStuNumber" parameterType="String" resultMap="DbStudentResult">
+        <include refid="selectDbStudentVo"/>
+        where s.stu_number = #{stuNumber}
+    </select>
+        
+    <insert id="insertDbStudent" parameterType="DbStudent">
+        insert into db_student
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="stuNumber != null and stuNumber != ''">stu_number,</if>
+            <if test="stuName != null and stuName != ''">stu_name,</if>
+            <if test="clsId != null">cls_id,</if>
+            <if test="stuGender != null and stuGender != ''">stu_gender,</if>
+            <if test="stuPhone != null and stuPhone != ''">stu_phone,</if>
+            <if test="stuAvg != null">stu_avg,</if>
+            <if test="stuAddress != null and stuAddress != ''">stu_address,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="stuNumber != null and stuNumber != ''">#{stuNumber},</if>
+            <if test="stuName != null and stuName != ''">#{stuName},</if>
+            <if test="clsId != null">#{clsId},</if>
+            <if test="stuGender != null and stuGender != ''">#{stuGender},</if>
+            <if test="stuPhone != null and stuPhone != ''">#{stuPhone},</if>
+            <if test="stuAvg != null">#{stuAvg},</if>
+            <if test="stuAddress != null and stuAddress != ''">#{stuAddress},</if>
+         </trim>
+    </insert>
+
+    <update id="updateDbStudent" parameterType="DbStudent">
+        update db_student
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="stuName != null and stuName != ''">stu_name = #{stuName},</if>
+            <if test="clsId != null">cls_id = #{clsId},</if>
+            <if test="stuGender != null and stuGender != ''">stu_gender = #{stuGender},</if>
+            <if test="stuPhone != null and stuPhone != ''">stu_phone = #{stuPhone},</if>
+            <if test="stuAvg != null">stu_avg = #{stuAvg},</if>
+            <if test="stuAddress != null and stuAddress != ''">stu_address = #{stuAddress},</if>
+        </trim>
+        where stu_number = #{stuNumber}
+    </update>
+
+    <delete id="deleteDbStudentByStuNumber" parameterType="String">
+        delete from db_student where stu_number = #{stuNumber}
+    </delete>
+
+    <delete id="deleteDbStudentByStuNumbers" parameterType="String">
+        delete from db_student where stu_number in 
+        <foreach item="stuNumber" collection="array" open="(" separator="," close=")">
+            #{stuNumber}
+        </foreach>
+    </delete>
+</mapper>

@@ -9,10 +9,10 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="教师id" prop="teaId">
+      <el-form-item label="授课老师" prop="teaName">
         <el-input
           v-model="queryParams.teaId"
-          placeholder="请输入教师id"
+          placeholder="请输入授课老师"
           clearable
           @keyup.enter.native="handleQuery"
         />
@@ -97,7 +97,7 @@
       <el-table-column type="selection" width="55" align="center" />
       <el-table-column label="课程id" align="center" prop="couId" />
       <el-table-column label="课程名称" align="center" prop="couName" />
-      <el-table-column label="教师id" align="center" prop="teaId" />
+      <el-table-column label="授课老师" align="center" prop="teaName" />
       <el-table-column label="学分" align="center" prop="couCredit" />
       <el-table-column label="学时" align="center" prop="couHour" />
       <el-table-column label="考核方式" align="center" prop="couWay" />
@@ -120,7 +120,7 @@
         </template>
       </el-table-column>
     </el-table>
-    
+
     <pagination
       v-show="total>0"
       :total="total"
@@ -135,8 +135,16 @@
         <el-form-item label="课程名称" prop="couName">
           <el-input v-model="form.couName" placeholder="请输入课程名称" />
         </el-form-item>
-        <el-form-item label="教师id" prop="teaId">
-          <el-input v-model="form.teaId" placeholder="请输入教师id" />
+        <el-form-item label="授课老师" prop="teaId">
+          <!-- <el-input v-model="form.teaId" placeholder="请输入教师id" /> -->
+          <el-select v-model="form.teaId" placeholder="请选择授课老师">
+            <el-option
+            v-for="item in teacherList"
+            :key="item.teaId"
+            :label="item.teaName"
+            :value="item.teaId"></el-option>
+          </el-select>
+
         </el-form-item>
         <el-form-item label="学分" prop="couCredit">
           <el-input v-model="form.couCredit" placeholder="请输入学分" />
@@ -158,6 +166,8 @@
 
 <script>
 import { listCourse, getCourse, delCourse, addCourse, updateCourse } from "@/api/student/course";
+//导入类型接口，查询所有老师的方法
+import { listAllTeacher } from "@/api/student/teacher";
 
 export default {
   name: "Course",
@@ -177,6 +187,8 @@ export default {
       total: 0,
       // 课程管理表格数据
       courseList: [],
+      //学院列表数据
+      teacherList: [],
       // 弹出层标题
       title: "",
       // 是否显示弹出层
@@ -199,7 +211,7 @@ export default {
           { required: true, message: "课程名称不能为空", trigger: "blur" }
         ],
         teaId: [
-          { required: true, message: "教师id不能为空", trigger: "blur" }
+          { required: true, message: "授课老师不能为空", trigger: "blur" }
         ],
         couCredit: [
           { required: true, message: "学分不能为空", trigger: "blur" }
@@ -215,8 +227,15 @@ export default {
   },
   created() {
     this.getList();
+    this.getAllTeacher();
   },
   methods: {
+      getAllTeacher(){
+        listAllTeacher().then(response =>{
+          this.teacherList = response;
+        })
+      },
+
     /** 查询课程管理列表 */
     getList() {
       this.loading = true;
