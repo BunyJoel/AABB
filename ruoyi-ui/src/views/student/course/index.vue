@@ -10,36 +10,22 @@
         />
       </el-form-item>
       <el-form-item label="授课老师" prop="teaName">
-        <el-input
-          v-model="queryParams.teaId"
+       <el-input
+          v-model="queryParams.teaName"
           placeholder="请输入授课老师"
           clearable
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="学分" prop="couCredit">
-        <el-input
-          v-model="queryParams.couCredit"
-          placeholder="请输入学分"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="学时" prop="couHour">
-        <el-input
-          v-model="queryParams.couHour"
-          placeholder="请输入学时"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
       <el-form-item label="考核方式" prop="couWay">
-        <el-input
-          v-model="queryParams.couWay"
-          placeholder="请输入考核方式"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
+        <el-select v-model="queryParams.couWay" placeholder="请选择考核方式" clearable>
+          <el-option
+            v-for="dict in dict.type.sys_exam_way"
+            :key="dict.value"
+            :label="dict.label"
+            :value="dict.value"
+          />
+        </el-select>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
@@ -100,7 +86,11 @@
       <el-table-column label="授课老师" align="center" prop="teaName" />
       <el-table-column label="学分" align="center" prop="couCredit" />
       <el-table-column label="学时" align="center" prop="couHour" />
-      <el-table-column label="考核方式" align="center" prop="couWay" />
+      <el-table-column label="考核方式" align="center" prop="couWay">
+        <template slot-scope="scope">
+          <dict-tag :options="dict.type.sys_exam_way" :value="scope.row.couWay"/>
+        </template>
+      </el-table-column>
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
@@ -136,15 +126,14 @@
           <el-input v-model="form.couName" placeholder="请输入课程名称" />
         </el-form-item>
         <el-form-item label="授课老师" prop="teaId">
-          <!-- <el-input v-model="form.teaId" placeholder="请输入教师id" /> -->
-          <el-select v-model="form.teaId" placeholder="请选择授课老师">
+          <!-- <el-input v-model="form.teaName" placeholder="请输入授课老师" /> -->
+          <el-select v-model="form.teaId" placeholder="请选择授课老师" clearable filterable @blur="selectBlur" @clear="selectClear">
             <el-option
             v-for="item in teacherList"
             :key="item.teaId"
             :label="item.teaName"
             :value="item.teaId"></el-option>
           </el-select>
-
         </el-form-item>
         <el-form-item label="学分" prop="couCredit">
           <el-input v-model="form.couCredit" placeholder="请输入学分" />
@@ -153,7 +142,14 @@
           <el-input v-model="form.couHour" placeholder="请输入学时" />
         </el-form-item>
         <el-form-item label="考核方式" prop="couWay">
-          <el-input v-model="form.couWay" placeholder="请输入考核方式" />
+          <el-select v-model="form.couWay" placeholder="请选择考核方式">
+            <el-option
+              v-for="dict in dict.type.sys_exam_way"
+              :key="dict.value"
+              :label="dict.label"
+              :value="dict.value"
+            ></el-option>
+          </el-select>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -171,6 +167,7 @@ import { listAllTeacher } from "@/api/student/teacher";
 
 export default {
   name: "Course",
+  dicts: ['sys_exam_way'],
   data() {
     return {
       // 遮罩层
@@ -198,9 +195,8 @@ export default {
         pageNum: 1,
         pageSize: 10,
         couName: null,
-        teaId: null,
-        couCredit: null,
-        couHour: null,
+        teaId:null,
+        teaName: null,
         couWay: null
       },
       // 表单参数
@@ -210,8 +206,8 @@ export default {
         couName: [
           { required: true, message: "课程名称不能为空", trigger: "blur" }
         ],
-        teaId: [
-          { required: true, message: "授课老师不能为空", trigger: "blur" }
+        teaName: [
+          { required: true, message: "教师id不能为空", trigger: "blur" }
         ],
         couCredit: [
           { required: true, message: "学分不能为空", trigger: "blur" }
@@ -220,7 +216,7 @@ export default {
           { required: true, message: "学时不能为空", trigger: "blur" }
         ],
         couWay: [
-          { required: true, message: "考核方式不能为空", trigger: "blur" }
+          { required: true, message: "考核方式不能为空", trigger: "change" }
         ]
       }
     };
@@ -230,12 +226,11 @@ export default {
     this.getAllTeacher();
   },
   methods: {
-      getAllTeacher(){
-        listAllTeacher().then(response =>{
-          this.teacherList = response;
-        })
-      },
-
+        getAllTeacher(){
+            listAllTeacher().then(response =>{
+              this.teacherList = response;
+            })
+          },
     /** 查询课程管理列表 */
     getList() {
       this.loading = true;
@@ -245,6 +240,14 @@ export default {
         this.loading = false;
       });
     },
+    selectBlur(e) {
+          this.teaId = e.target.value;
+          this.$forceUpdate(); // 强制更新
+        },
+        selectClear() {
+          this.teaId = "";
+          this.$forceUpdate(); // 强制更新
+        },
     // 取消按钮
     cancel() {
       this.open = false;
@@ -256,6 +259,7 @@ export default {
         couId: null,
         couName: null,
         teaId: null,
+        teaName: null,
         couCredit: null,
         couHour: null,
         couWay: null

@@ -16,7 +16,7 @@
           clearable
           @keyup.enter.native="handleQuery"
         /> -->
-        <el-select v-model="queryParams.majId" placeholder="请选择所属专业">
+        <el-select v-model="queryParams.majId" placeholder="请选择所属专业"  clearable filterable @blur="selectBlur" @clear="selectClear">
           <el-option
           v-for="item in majorList"
           :key="item.majId"
@@ -117,7 +117,7 @@
         </el-form-item>
         <el-form-item label="所属专业" prop="majId">
          <!-- <el-input v-model="form.majId" placeholder="请输入专业id" /> -->
-         <el-select v-model="form.majId" placeholder="请选择所属专业">
+         <el-select v-model="form.majId" placeholder="请选择所属专业" clearable filterable @blur="selectBlur" @clear="selectClear">
            <el-option
            v-for="item in majorList"
            :key="item.majId"
@@ -202,6 +202,14 @@ export default {
         this.loading = false;
       });
     },
+    selectBlur(e) {
+          this.collId = e.target.value;
+          this.$forceUpdate(); // 强制更新
+        },
+    selectClear() {
+          this.collId = "";
+          this.$forceUpdate(); // 强制更新
+        },
     // 取消按钮
     cancel() {
       this.open = false;

@@ -24,7 +24,7 @@
           clearable
           @keyup.enter.native="handleQuery"
         /> -->
-        <el-select v-model="queryParams.couId" placeholder="请选择课程">
+        <el-select v-model="queryParams.couId" placeholder="请选择课程" clearable filterable @blur="selectBlur" @clear="selectClear">
           <el-option
           v-for="item in courseList"
           :key="item.couId"
@@ -39,7 +39,7 @@
           clearable
           @keyup.enter.native="handleQuery"
         /> -->
-        <el-select v-model="queryParams.teaId" placeholder="请选择授课老师">
+        <el-select v-model="queryParams.teaId" placeholder="请选择授课老师" clearable filterable @blur="selectBlur" @clear="selectClear">
           <el-option
           v-for="item in teacherList"
           :key="item.teaId"
@@ -54,7 +54,7 @@
     </el-form>
 
     <el-row :gutter="10" class="mb8">
-      <el-col :span="1.5">
+<!--      <el-col :span="1.5">
         <el-button
           type="primary"
           plain
@@ -63,7 +63,7 @@
           @click="handleAdd"
           v-hasPermi="['student:score:add']"
         >新增</el-button>
-      </el-col>
+      </el-col> -->
       <el-col :span="1.5">
         <el-button
           type="success"
@@ -75,7 +75,7 @@
           v-hasPermi="['student:score:edit']"
         >修改</el-button>
       </el-col>
-      <el-col :span="1.5">
+<!--      <el-col :span="1.5">
         <el-button
           type="danger"
           plain
@@ -85,7 +85,7 @@
           @click="handleDelete"
           v-hasPermi="['student:score:remove']"
         >删除</el-button>
-      </el-col>
+      </el-col> -->
       <el-col :span="1.5">
         <el-button
           type="warning"
@@ -101,7 +101,7 @@
 
     <el-table v-loading="loading" :data="scoreList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="编号" align="center" prop="scoId" />
+<!--      <el-table-column label="编号" align="center" prop="scoId" /> -->
       <el-table-column label="学号" align="center" prop="stuNumber" />
       <el-table-column label="学生姓名" align="center" prop="stuName" />
       <el-table-column label="课程" align="center" prop="couName" />
@@ -117,13 +117,13 @@
             @click="handleUpdate(scope.row)"
             v-hasPermi="['student:score:edit']"
           >修改</el-button>
-          <el-button
+          <!-- <el-button
             size="mini"
             type="text"
             icon="el-icon-delete"
             @click="handleDelete(scope.row)"
             v-hasPermi="['student:score:remove']"
-          >删除</el-button>
+          >删除</el-button> -->
         </template>
       </el-table-column>
     </el-table>
@@ -219,7 +219,14 @@ export default {
         this.teacherList = response;
       })
     },
-
+    selectBlur(e) {
+            this.collId = e.target.value;
+            this.$forceUpdate(); // 强制更新
+          },
+          selectClear() {
+            this.collId = "";
+            this.$forceUpdate(); // 强制更新
+          },
     /** 查询成绩管理列表 */
     getList() {
       this.loading = true;

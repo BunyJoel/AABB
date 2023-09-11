@@ -16,13 +16,13 @@
           clearable
           @keyup.enter.native="handleQuery"
         /> -->
-        <el-select v-model="queryParams.collId" placeholder="请选择学院">
+        <el-select v-model="queryParams.collId" placeholder="请选择所属学院" clearable filterable @blur="selectBlur" @clear="selectClear">
           <el-option
           v-for="item in collegeList"
           :key="item.collId"
           :label="item.collName"
           :value="item.collId"></el-option>
-        </el-select>
+          </el-select>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
@@ -117,15 +117,13 @@
         </el-form-item>
         <el-form-item label="学院" prop="collId">
           <!-- <el-input v-model="form.collId" placeholder="请输入学院id" /> -->
-          <el-select v-model="form.collId" placeholder="请选择隶属学院">
-            <el-option
-            v-for="item in collegeList"
-            :key="item.collId"
-            :label="item.collName"
-            :value="item.collId"></el-option>
+        <el-select v-model="form.collId" placeholder="请选择所属学院" clearable filterable @blur="selectBlur" @clear="selectClear">
+          <el-option
+          v-for="item in collegeList"
+          :key="item.collId"
+          :label="item.collName"
+          :value="item.collId"></el-option>
           </el-select>
-
-
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -196,7 +194,14 @@ export default {
         this.collegeList = response;
       })
     },
-
+      selectBlur(e) {
+            this.collId = e.target.value;
+            this.$forceUpdate(); // 强制更新
+          },
+          selectClear() {
+            this.collId = "";
+            this.$forceUpdate(); // 强制更新
+          },
     /** 查询专业管理列表 */
     getList() {
       this.loading = true;

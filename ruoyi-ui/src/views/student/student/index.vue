@@ -18,53 +18,19 @@
         />
       </el-form-item>
       <el-form-item label="班级" prop="clsId">
-   <!--     <el-input
-          v-model="queryParams.clsId"
+<!--        <el-input
+          v-model="queryParams.clsName"
           placeholder="请输入班级id"
           clearable
           @keyup.enter.native="handleQuery"
         /> -->
-        <el-select v-model="queryParams.clsId" placeholder="请选择班级">
+        <el-select v-model="queryParams.clsId" placeholder="请选择所在班级" clearable filterable @blur="selectBlur" @clear="selectClear">
           <el-option
           v-for="item in classList"
           :key="item.clsId"
           :label="item.clsName"
           :value="item.clsId"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="性别" prop="stuGender">
-        <el-select v-model="queryParams.stuGender" placeholder="请选择性别" clearable>
-          <el-option
-            v-for="dict in dict.type.sys_user_sex"
-            :key="dict.value"
-            :label="dict.label"
-            :value="dict.value"
-          />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="电话" prop="stuPhone">
-        <el-input
-          v-model="queryParams.stuPhone"
-          placeholder="请输入电话"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="平均绩点" prop="stuAvg">
-        <el-input
-          v-model="queryParams.stuAvg"
-          placeholder="请输入平均绩点"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
-      </el-form-item>
-      <el-form-item label="生源地" prop="stuAddress">
-        <el-input
-          v-model="queryParams.stuAddress"
-          placeholder="请输入生源地"
-          clearable
-          @keyup.enter.native="handleQuery"
-        />
+          </el-select>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" icon="el-icon-search" size="mini" @click="handleQuery">搜索</el-button>
@@ -166,14 +132,14 @@
           <el-input v-model="form.stuName" placeholder="请输入学生姓名" />
         </el-form-item>
         <el-form-item label="班级" prop="clsId">
-          <!-- <el-input v-model="form.clsId" placeholder="请输入班级" /> -->
-          <el-select v-model="form.clsId" placeholder="请选择班级">
+          <!-- <el-input v-model="form.clsName" placeholder="请输入班级id" /> -->
+          <el-select v-model="form.clsId" placeholder="请选择所在班级" clearable filterable @blur="selectBlur" @clear="selectClear">
             <el-option
             v-for="item in classList"
             :key="item.clsId"
             :label="item.clsName"
             :value="item.clsId"></el-option>
-          </el-select>
+            </el-select>
         </el-form-item>
         <el-form-item label="性别" prop="stuGender">
           <el-select v-model="form.stuGender" placeholder="请选择性别">
@@ -202,7 +168,7 @@
 
 <script>
 import { listStudent, getStudent, delStudent, addStudent, updateStudent } from "@/api/student/student";
-import{ listAllClass } from "@/api/student/class"
+import { listAllClass } from "@/api/student/class";
 
 export default {
   name: "Student",
@@ -223,7 +189,7 @@ export default {
       total: 0,
       // 学生管理表格数据
       studentList: [],
-      //班级列表
+      // 班级列表
       classList: [],
       // 弹出层标题
       title: "",
@@ -235,11 +201,8 @@ export default {
         pageSize: 10,
         stuNumber: null,
         stuName: null,
+        clsName: null,
         clsId: null,
-        stuGender: null,
-        stuPhone: null,
-        stuAvg: null,
-        stuAddress: null
       },
       // 表单参数
       form: {},
@@ -251,8 +214,8 @@ export default {
         stuName: [
           { required: true, message: "学生姓名不能为空", trigger: "blur" }
         ],
-        clsId: [
-          { required: true, message: "班级id不能为空", trigger: "blur" }
+        clsName: [
+          { required: true, message: "班级不能为空", trigger: "blur" }
         ],
         stuGender: [
           { required: true, message: "性别不能为空", trigger: "change" }
@@ -271,11 +234,6 @@ export default {
     this.getAllClass();
   },
   methods: {
-    getAllClass(){
-      listAllClass().then(response =>{
-        this.classList = response;
-      })
-    },
     /** 查询学生管理列表 */
     getList() {
       this.loading = true;
@@ -285,6 +243,19 @@ export default {
         this.loading = false;
       });
     },
+    getAllClass(){
+      listAllClass().then(response =>{
+        this.classList = response;
+      })
+    },
+    selectBlur(e) {
+          this.collId = e.target.value;
+          this.$forceUpdate(); // 强制更新
+        },
+        selectClear() {
+          this.collId = "";
+          this.$forceUpdate(); // 强制更新
+        },
     // 取消按钮
     cancel() {
       this.open = false;
@@ -295,11 +266,12 @@ export default {
       this.form = {
         stuNumber: null,
         stuName: null,
-        clsId: null,
+        clsName: null,
         stuGender: null,
         stuPhone: null,
         stuAvg: null,
-        stuAddress: null
+        stuAddress: null,
+        clsId: null
       };
       this.resetForm("form");
     },

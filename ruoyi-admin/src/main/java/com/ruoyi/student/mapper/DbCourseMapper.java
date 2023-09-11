@@ -7,7 +7,7 @@ import com.ruoyi.student.domain.DbCourse;
  * 课程管理Mapper接口
  * 
  * @author AABB
- * @date 2023-09-09
+ * @date 2023-09-11
  */
 public interface DbCourseMapper 
 {

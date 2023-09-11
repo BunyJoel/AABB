@@ -10,7 +10,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
  * 课程管理对象 db_course
  * 
  * @author AABB
- * @date 2023-09-09
+ * @date 2023-09-11
  */
 public class DbCourse extends BaseEntity
 {
@@ -25,8 +25,8 @@ public class DbCourse extends BaseEntity
     private String couName;
 
     /** 教师id */
-//    @Excel(name = "教师id")
-    private Long teaId;
+    @Excel(name = "授课老师")
+    private String teaName;
 
     /** 学分 */
     @Excel(name = "学分")
@@ -40,8 +40,8 @@ public class DbCourse extends BaseEntity
     @Excel(name = "考核方式")
     private String couWay;
 
-    @Excel(name = "教师名称")
-    private String teaName;
+    @Excel(name = "教师id")
+    private Long teaId;
 
     public void setCouId(Long couId) 
     {
@@ -61,14 +61,14 @@ public class DbCourse extends BaseEntity
     {
         return couName;
     }
-    public void setTeaId(Long teaId) 
+    public void setTeaName(String teaName) 
     {
-        this.teaId = teaId;
+        this.teaName = teaName;
     }
 
-    public Long getTeaId() 
+    public String getTeaName() 
     {
-        return teaId;
+        return teaName;
     }
     public void setCouCredit(BigDecimal couCredit) 
     {
@@ -98,12 +98,12 @@ public class DbCourse extends BaseEntity
         return couWay;
     }
 
-    public String getTeaName() {
-        return teaName;
+    public Long getTeaId() {
+        return teaId;
     }
 
-    public void setTeaName(String teaName) {
-        this.teaName = teaName;
+    public void setTeaId(Long teaId) {
+        this.teaId = teaId;
     }
 
     @Override
@@ -111,7 +111,7 @@ public class DbCourse extends BaseEntity
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("couId", getCouId())
             .append("couName", getCouName())
-            .append("teaId", getTeaId())
+            .append("teaName", getTeaName())
             .append("couCredit", getCouCredit())
             .append("couHour", getCouHour())
             .append("couWay", getCouWay())

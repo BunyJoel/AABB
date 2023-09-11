@@ -10,7 +10,7 @@ import com.ruoyi.common.core.domain.BaseEntity;
  * 学生管理对象 db_student
  * 
  * @author AABB
- * @date 2023-09-10
+ * @date 2023-09-11
  */
 public class DbStudent extends BaseEntity
 {
@@ -25,8 +25,6 @@ public class DbStudent extends BaseEntity
     private String stuName;
 
     /** 班级id */
-//    @Excel(name = "班级id")
-    private Long clsId;
     @Excel(name = "班级名称")
     private String clsName;
 
@@ -46,6 +44,9 @@ public class DbStudent extends BaseEntity
     @Excel(name = "生源地")
     private String stuAddress;
 
+    @Excel(name = "班级id")
+    private String clsId;
+
     public void setStuNumber(String stuNumber) 
     {
         this.stuNumber = stuNumber;
@@ -64,14 +65,14 @@ public class DbStudent extends BaseEntity
     {
         return stuName;
     }
-    public void setClsId(Long clsId) 
+    public void setClsName(String clsName) 
     {
-        this.clsId = clsId;
+        this.clsName = clsName;
     }
 
-    public Long getClsId() 
+    public String getClsName() 
     {
-        return clsId;
+        return clsName;
     }
     public void setStuGender(String stuGender) 
     {
@@ -110,12 +111,12 @@ public class DbStudent extends BaseEntity
         return stuAddress;
     }
 
-    public String getClsName() {
-        return clsName;
+    public String getClsId() {
+        return clsId;
     }
 
-    public void setClsName(String clsName) {
-        this.clsName = clsName;
+    public void setClsId(String clsId) {
+        this.clsId = clsId;
     }
 
     @Override
@@ -123,7 +124,7 @@ public class DbStudent extends BaseEntity
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("stuNumber", getStuNumber())
             .append("stuName", getStuName())
-            .append("clsId", getClsId())
+            .append("clsName", getClsName())
             .append("stuGender", getStuGender())
             .append("stuPhone", getStuPhone())
             .append("stuAvg", getStuAvg())

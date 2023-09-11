@@ -25,7 +25,7 @@ import com.ruoyi.common.core.page.TableDataInfo;
  * 课程管理Controller
  * 
  * @author AABB
- * @date 2023-09-09
+ * @date 2023-09-11
  */
 @RestController
 @RequestMapping("/student/course")
@@ -34,16 +34,11 @@ public class DbCourseController extends BaseController
     @Autowired
     private IDbCourseService dbCourseService;
 
-
-    /**
-     * 查询所有的课程
-     */
     @PreAuthorize("@ss.hasPermi('student:course:list')")
-    @GetMapping("/listall")
-    public List<DbCourse> listAll()
-    {
+    @GetMapping({"/listall"})
+    public List<DbCourse> listAll() {
         DbCourse dbCourse = new DbCourse();
-        List<DbCourse> list = dbCourseService.selectDbCourseList(dbCourse);
+        List<DbCourse> list = this.dbCourseService.selectDbCourseList(dbCourse);
         return list;
     }
 

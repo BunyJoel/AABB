@@ -8,7 +8,7 @@
           clearable
           @keyup.enter.native="handleQuery"
         /> -->
-        <el-select v-model="queryParams.couId" placeholder="请选择课程">
+        <el-select v-model="queryParams.couId" placeholder="请选择课程" clearable filterable @blur="selectBlur" @clear="selectClear">
           <el-option
           v-for="item in courseList"
           :key="item.couId"
@@ -23,7 +23,7 @@
           clearable
           @keyup.enter.native="handleQuery"
         /> -->
-        <el-select v-model="queryParams.majId" placeholder="请选择开设专业">
+        <el-select v-model="queryParams.majId" placeholder="请选择开设专业" clearable filterable @blur="selectBlur" @clear="selectClear">
           <el-option
           v-for="item in majorList"
           :key="item.majId"
@@ -119,9 +119,9 @@
     <!-- 添加或修改开发管理对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-        <el-form-item label="课程id" prop="couId">
+        <el-form-item label="课程" prop="couId">
           <!-- <el-input v-model="form.couId" placeholder="请输入课程id" /> -->
-          <el-select v-model="form.couId" placeholder="请选择课程">
+          <el-select v-model="form.couId" placeholder="请选择课程" clearable filterable @blur="selectBlur" @clear="selectClear">
             <el-option
             v-for="item in courseList"
             :key="item.couId"
@@ -131,7 +131,7 @@
         </el-form-item>
         <el-form-item label="开设专业" prop="majId">
          <!-- <el-input v-model="form.majId" placeholder="请输入班级id" /> -->
-         <el-select v-model="form.majId" placeholder="请选择开设专业">
+         <el-select v-model="form.majId" placeholder="请选择开设专业" clearable filterable @blur="selectBlur" @clear="selectClear">
            <el-option
            v-for="item in majorList"
            :key="item.majId"
@@ -217,6 +217,14 @@ export default {
         this.majorList = response;
       })
     },
+    selectBlur(e) {
+          this.collId = e.target.value;
+          this.$forceUpdate(); // 强制更新
+        },
+        selectClear() {
+          this.collId = "";
+          this.$forceUpdate(); // 强制更新
+        },
     /** 查询开发管理列表 */
     getList() {
       this.loading = true;

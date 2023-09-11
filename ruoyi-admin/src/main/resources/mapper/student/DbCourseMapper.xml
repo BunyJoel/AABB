@@ -7,24 +7,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <resultMap type="DbCourse" id="DbCourseResult">
         <result property="couId"    column="cou_id"    />
         <result property="couName"    column="cou_name"    />
-        <result property="teaId"    column="tea_id"    />
+        <result property="teaName"    column="tea_name"    />
         <result property="couCredit"    column="cou_credit"    />
         <result property="couHour"    column="cou_hour"    />
         <result property="couWay"    column="cou_way"    />
-        <result property="teaName"   column="tea_name"/>
+        <result property="teaId"    column="tea_id"    />
     </resultMap>
 
     <sql id="selectDbCourseVo">
-        select c.cou_id, c.cou_name, t.tea_name, c.cou_credit, c.cou_hour, c.cou_way from db_course c inner join db_teacher t on c.tea_id = t.tea_id
+        select c.cou_id, c.cou_name,c.tea_id,t.tea_name, c.cou_credit, c.cou_hour, c.cou_way from db_course c inner join db_teacher t on c.tea_id = t.tea_id
     </sql>
 
     <select id="selectDbCourseList" parameterType="DbCourse" resultMap="DbCourseResult">
         <include refid="selectDbCourseVo"/>
         <where>  
             <if test="couName != null  and couName != ''"> and c.cou_name like concat('%', #{couName}, '%')</if>
-            <if test="teaId != null "> and t.tea_name like concat('%', #{teaId}, '%')</if>
-            <if test="couCredit != null "> and c.cou_credit = #{couCredit}</if>
-            <if test="couHour != null "> and c.cou_hour = #{couHour}</if>
+            <if test="teaName != null  and teaName != ''"> and t.tea_name like concat('%', #{teaName}, '%')</if>
             <if test="couWay != null  and couWay != ''"> and c.cou_way = #{couWay}</if>
         </where>
     </select>
@@ -38,14 +36,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         insert into db_course
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="couName != null and couName != ''">cou_name,</if>
-            <if test="teaId != null">tea_id,</if>
+            <if test="teaId != null and teaId != ''">tea_id,</if>
             <if test="couCredit != null">cou_credit,</if>
             <if test="couHour != null">cou_hour,</if>
             <if test="couWay != null and couWay != ''">cou_way,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="couName != null and couName != ''">#{couName},</if>
-            <if test="teaId != null">#{teaId},</if>
+            <if test="teaId != null and teaId != ''">#{teaId},</if>
             <if test="couCredit != null">#{couCredit},</if>
             <if test="couHour != null">#{couHour},</if>
             <if test="couWay != null and couWay != ''">#{couWay},</if>
@@ -56,7 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         update db_course
         <trim prefix="SET" suffixOverrides=",">
             <if test="couName != null and couName != ''">cou_name = #{couName},</if>
-            <if test="teaId != null">tea_id = #{teaId},</if>
+            <if test="teaId != null and teaId != ''">tea_id = #{teaId},</if>
             <if test="couCredit != null">cou_credit = #{couCredit},</if>
             <if test="couHour != null">cou_hour = #{couHour},</if>
             <if test="couWay != null and couWay != ''">cou_way = #{couWay},</if>

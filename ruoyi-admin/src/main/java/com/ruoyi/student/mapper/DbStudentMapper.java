@@ -7,7 +7,7 @@ import com.ruoyi.student.domain.DbStudent;
  * 学生管理Mapper接口
  * 
  * @author AABB
- * @date 2023-09-10
+ * @date 2023-09-11
  */
 public interface DbStudentMapper 
 {
