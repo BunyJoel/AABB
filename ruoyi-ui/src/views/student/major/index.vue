@@ -16,7 +16,7 @@
           clearable
           @keyup.enter.native="handleQuery"
         /> -->
-        <el-select v-model="queryParams.collId" placeholder="请选择所属学院" clearable filterable @blur="selectBlur" @clear="selectClear">
+        <el-select v-model="queryParams.collId" @change="handleQuery" placeholder="请选择所属学院" clearable filterable @blur="selectBlur" @clear="selectClear">
           <el-option
           v-for="item in collegeList"
           :key="item.collId"

@@ -11,6 +11,7 @@ import com.ruoyi.student.domain.DbCourse;
  */
 public interface DbCourseMapper 
 {
+
     /**
      * 查询课程管理
      * 

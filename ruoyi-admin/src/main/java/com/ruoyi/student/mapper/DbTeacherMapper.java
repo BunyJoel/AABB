@@ -11,6 +11,9 @@ import com.ruoyi.student.domain.DbTeacher;
  */
 public interface DbTeacherMapper 
 {
+
+    String selectcount();
+
     /**
      * 查询教师管理
      * 

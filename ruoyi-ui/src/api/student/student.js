@@ -1,5 +1,13 @@
 import request from '@/utils/request'
 
+// 查询学生数量
+export function selectstudentcount() {
+  return request({
+    url: '/student/student/selectcount',
+    method: 'get',
+  })
+}
+
 // 查询学生管理列表
 export function listStudent(query) {
   return request({
@@ -10,9 +18,9 @@ export function listStudent(query) {
 }
 
 // 查询学生管理详细
-export function getStudent(stuNumber) {
+export function getStudent(stuId) {
   return request({
-    url: '/student/student/' + stuNumber,
+    url: '/student/student/' + stuId,
     method: 'get'
   })
 }
@@ -36,9 +44,9 @@ export function updateStudent(data) {
 }
 
 // 删除学生管理
-export function delStudent(stuNumber) {
+export function delStudent(stuId) {
   return request({
-    url: '/student/student/' + stuNumber,
+    url: '/student/student/' + stuId,
     method: 'delete'
   })
 }

@@ -18,13 +18,7 @@
         />
       </el-form-item>
       <el-form-item label="班级" prop="clsId">
-<!--        <el-input
-          v-model="queryParams.clsName"
-          placeholder="请输入班级id"
-          clearable
-          @keyup.enter.native="handleQuery"
-        /> -->
-        <el-select v-model="queryParams.clsId" placeholder="请选择所在班级" clearable filterable @blur="selectBlur" @clear="selectClear">
+        <el-select v-model="queryParams.clsId" @change="handleQuery" placeholder="请选择所在班级" clearable filterable @blur="selectBlur" @clear="selectClear">
           <el-option
           v-for="item in classList"
           :key="item.clsId"
@@ -86,6 +80,7 @@
 
     <el-table v-loading="loading" :data="studentList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
+      <!-- <el-table-column label="编号" align="center" prop="stuId" /> -->
       <el-table-column label="学号" align="center" prop="stuNumber" />
       <el-table-column label="学生姓名" align="center" prop="stuName" />
       <el-table-column label="班级" align="center" prop="clsName" />
@@ -128,6 +123,9 @@
     <!-- 添加或修改学生管理对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+        <el-form-item label="学生学号" prop="stuNumber">
+          <el-input v-model="form.stuNumber" placeholder="请输入学生学号" />
+        </el-form-item>
         <el-form-item label="学生姓名" prop="stuName">
           <el-input v-model="form.stuName" placeholder="请输入学生姓名" />
         </el-form-item>
@@ -202,7 +200,7 @@ export default {
         stuNumber: null,
         stuName: null,
         clsName: null,
-        clsId: null,
+        clsId: null
       },
       // 表单参数
       form: {},
@@ -220,12 +218,6 @@ export default {
         stuGender: [
           { required: true, message: "性别不能为空", trigger: "change" }
         ],
-        stuPhone: [
-          { required: true, message: "电话不能为空", trigger: "blur" }
-        ],
-        stuAddress: [
-          { required: true, message: "生源地不能为空", trigger: "blur" }
-        ]
       }
     };
   },
@@ -256,22 +248,22 @@ export default {
           this.collId = "";
           this.$forceUpdate(); // 强制更新
         },
-    // 取消按钮
-    cancel() {
-      this.open = false;
-      this.reset();
-    },
+        // 取消按钮
+        cancel() {
+          this.open = false;
+          this.reset();
+        },
     // 表单重置
     reset() {
       this.form = {
+        stuId: null,
         stuNumber: null,
         stuName: null,
         clsName: null,
         stuGender: null,
         stuPhone: null,
         stuAvg: null,
-        stuAddress: null,
-        clsId: null
+        stuAddress: null
       };
       this.resetForm("form");
     },
@@ -287,7 +279,7 @@ export default {
     },
     // 多选框选中数据
     handleSelectionChange(selection) {
-      this.ids = selection.map(item => item.stuNumber)
+      this.ids = selection.map(item => item.stuId)
       this.single = selection.length!==1
       this.multiple = !selection.length
     },
@@ -300,8 +292,8 @@ export default {
     /** 修改按钮操作 */
     handleUpdate(row) {
       this.reset();
-      const stuNumber = row.stuNumber || this.ids
-      getStudent(stuNumber).then(response => {
+      const stuId = row.stuId || this.ids
+      getStudent(stuId).then(response => {
         this.form = response.data;
         this.open = true;
         this.title = "修改学生管理";
@@ -311,7 +303,7 @@ export default {
     submitForm() {
       this.$refs["form"].validate(valid => {
         if (valid) {
-          if (this.form.stuNumber != null) {
+          if (this.form.stuId != null) {
             updateStudent(this.form).then(response => {
               this.$modal.msgSuccess("修改成功");
               this.open = false;
@@ -329,9 +321,9 @@ export default {
     },
     /** 删除按钮操作 */
     handleDelete(row) {
-      const stuNumbers = row.stuNumber || this.ids;
-      this.$modal.confirm('是否确认删除学生管理编号为"' + stuNumbers + '"的数据项？').then(function() {
-        return delStudent(stuNumbers);
+      const stuIds = row.stuId || this.ids;
+      this.$modal.confirm('是否确认删除学生管理编号为"' + stuIds + '"的数据项？').then(function() {
+        return delStudent(stuIds);
       }).then(() => {
         this.getList();
         this.$modal.msgSuccess("删除成功");

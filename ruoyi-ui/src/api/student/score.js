@@ -1,4 +1,11 @@
 import request from '@/utils/request'
+//统计平均分
+export function getAvgScore(collId){
+  return request({
+    url: '/student/score/'+ collId,
+    method: 'get',
+  })
+}
 
 // 查询成绩管理列表
 export function listScore(query) {
@@ -12,7 +19,7 @@ export function listScore(query) {
 // 查询成绩管理详细
 export function getScore(scoId) {
   return request({
-    url: '/student/score/' + scoId,
+    url: '/student/score/info/' + scoId,
     method: 'get'
   })
 }

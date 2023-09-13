@@ -2,16 +2,11 @@ package com.ruoyi.student.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletResponse;
+
+import com.ruoyi.student.pojo.Information;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.ruoyi.common.annotation.Log;
 import com.ruoyi.common.core.controller.BaseController;
 import com.ruoyi.common.core.domain.AjaxResult;
@@ -46,6 +41,15 @@ public class DbScoreController extends BaseController
         return getDataTable(list);
     }
 
+    //统计平均分
+    @PreAuthorize("@ss.hasPermi('student:score:getAvgScore')")
+    @GetMapping(value = "/{collId}")
+    public List<Information> getAvgScore(@PathVariable("collId") Long collId){
+
+        return dbScoreService.getAvgScore(collId);
+    }
+
+
     /**
      * 导出成绩管理列表
      */
@@ -63,7 +67,7 @@ public class DbScoreController extends BaseController
      * 获取成绩管理详细信息
      */
     @PreAuthorize("@ss.hasPermi('student:score:query')")
-    @GetMapping(value = "/{scoId}")
+    @GetMapping(value = "/info/{scoId}")
     public AjaxResult getInfo(@PathVariable("scoId") Long scoId)
     {
         return success(dbScoreService.selectDbScoreByScoId(scoId));
@@ -96,7 +100,7 @@ public class DbScoreController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('student:score:remove')")
     @Log(title = "成绩管理", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{scoIds}")
+    @DeleteMapping("/{scoIds}")
     public AjaxResult remove(@PathVariable Long[] scoIds)
     {
         return toAjax(dbScoreService.deleteDbScoreByScoIds(scoIds));

@@ -7,17 +7,21 @@ import com.ruoyi.student.domain.DbStudent;
  * 学生管理Mapper接口
  * 
  * @author AABB
- * @date 2023-09-11
+ * @date 2023-09-13
  */
 public interface DbStudentMapper 
 {
+
+
+    String selectcount();
+
     /**
      * 查询学生管理
      * 
-     * @param stuNumber 学生管理主键
+     * @param stuId 学生管理主键
      * @return 学生管理
      */
-    public DbStudent selectDbStudentByStuNumber(String stuNumber);
+    public DbStudent selectDbStudentByStuId(Long stuId);
 
     /**
      * 查询学生管理列表
@@ -46,16 +50,16 @@ public interface DbStudentMapper
     /**
      * 删除学生管理
      * 
-     * @param stuNumber 学生管理主键
+     * @param stuId 学生管理主键
      * @return 结果
      */
-    public int deleteDbStudentByStuNumber(String stuNumber);
+    public int deleteDbStudentByStuId(Long stuId);
 
     /**
      * 批量删除学生管理
      * 
-     * @param stuNumbers 需要删除的数据主键集合
+     * @param stuIds 需要删除的数据主键集合
      * @return 结果
      */
-    public int deleteDbStudentByStuNumbers(String[] stuNumbers);
+    public int deleteDbStudentByStuIds(Long[] stuIds);
 }

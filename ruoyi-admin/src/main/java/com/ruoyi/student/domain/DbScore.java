@@ -50,6 +50,13 @@ public class DbScore extends BaseEntity
     @Excel(name = "绩点")
     private BigDecimal gpa;
 
+    @Excel(name = "班级id")
+    private Long collId;
+
+    @Excel(name = "学生Id")
+    private Long stuId;
+
+
     public void setScoId(Long scoId) 
     {
         this.scoId = scoId;
@@ -128,6 +135,22 @@ public class DbScore extends BaseEntity
 
     public void setTeaName(String teaName) {
         this.teaName = teaName;
+    }
+
+    public Long getCollId() {
+        return collId;
+    }
+
+    public void setCollId(Long collId) {
+        this.collId = collId;
+    }
+
+    public Long getStuId() {
+        return stuId;
+    }
+
+    public void setStuId(Long stuId) {
+        this.stuId = stuId;
     }
 
     @Override

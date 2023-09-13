@@ -1,6 +1,8 @@
 package com.ruoyi.student.service.impl;
 
 import java.util.List;
+
+import com.ruoyi.student.pojo.Information;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.student.mapper.DbScoreMapper;
@@ -18,6 +20,12 @@ public class DbScoreServiceImpl implements IDbScoreService
 {
     @Autowired
     private DbScoreMapper dbScoreMapper;
+
+    @Override
+    public List<Information> getAvgScore(Long collId) {
+        return dbScoreMapper.getAvgScore(collId);
+    }
+
 
     /**
      * 查询成绩管理

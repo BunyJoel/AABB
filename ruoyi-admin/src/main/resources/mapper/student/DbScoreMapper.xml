@@ -14,16 +14,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="gpa"    column="GPA"    />
         <result property="couName"    column="cou_name"    />
         <result property="teaName"    column="tea_name"    />
+        <result property="stuId"      column="stu_id"/>
     </resultMap>
 
     <sql id="selectDbScoreVo">
-        select sco_id, stu_number, stu_name, cou_name, tea_name, score, GPA from db_score s inner join db_course c on s.cou_id = c.cou_id inner join db_teacher t on s.tea_id = t.tea_id
+        select sco_id, ss.stu_number, s.stu_name, cou_name, tea_name, score, GPA from db_score s inner join db_course c on s.cou_id = c.cou_id inner join db_teacher t on s.tea_id = t.tea_id inner join db_student ss on s.stu_id = ss.stu_id
     </sql>
 
     <select id="selectDbScoreList" parameterType="DbScore" resultMap="DbScoreResult">
         <include refid="selectDbScoreVo"/>
         <where>  
-            <if test="stuNumber != null  and stuNumber != ''"> and s.stu_number = #{stuNumber}</if>
+            <if test="stuNumber != null  and stuNumber != ''"> and ss.stu_number = #{stuNumber}</if>
             <if test="stuName != null  and stuName != ''"> and s.stu_name like concat('%', #{stuName}, '%')</if>
             <if test="couId != null "> and s.cou_id = #{couId}</if>
             <if test="teaId != null "> and s.tea_id = #{teaId}</if>
@@ -32,9 +33,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     <select id="selectDbScoreByScoId" parameterType="Long" resultMap="DbScoreResult">
         <include refid="selectDbScoreVo"/>
-        where s.sco_id = #{scoId}
+        where sco_id = #{scoId}
     </select>
-        
+    <select id="getAvgScore" resultType="com.ruoyi.student.pojo.Information">
+        select cou_name as name,ROUND(AVG(score)) as value
+                    from
+                        db_course c
+                    inner join
+                    db_score s
+                    on
+                        c.cou_id = s.cou_id
+                        INNER JOIN
+                        db_set ss
+                        on
+                        c.cou_id = ss.cou_id
+                        INNER JOIN
+                        db_major m
+                        on
+                        ss.maj_id = m.maj_id
+                    <where>
+                        <if test="collId != 0 "> and m.coll_id = #{collId}</if>
+                    </where>
+                    GROUP BY cou_name ORDER BY value ASC limit 8;
+    </select>
+
     <insert id="insertDbScore" parameterType="DbScore" useGeneratedKeys="true" keyProperty="scoId">
         insert into db_score
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -58,10 +80,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <update id="updateDbScore" parameterType="DbScore">
         update db_score
         <trim prefix="SET" suffixOverrides=",">
-            <if test="stuNumber != null">stu_number = #{stuNumber},</if>
-            <if test="stuName != null">stu_name = #{stuName},</if>
-            <if test="couId != null">cou_id = #{couId},</if>
-            <if test="teaId != null">tea_id = #{teaId},</if>
+<!--            <if test="stuNumber != null">stu_id = #{stuId},</if>-->
+<!--            <if test="stuName != null">stu_name = #{stuName},</if>-->
+<!--            <if test="couId != null">cou_id = #{couId},</if>-->
+<!--            <if test="teaId != null">tea_id = #{teaId},</if>-->
             <if test="score != null">score = #{score},</if>
             <if test="gpa != null">GPA = #{gpa},</if>
         </trim>

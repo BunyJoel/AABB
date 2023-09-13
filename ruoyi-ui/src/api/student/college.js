@@ -1,5 +1,13 @@
 import request from '@/utils/request'
 
+// 查询学院数量
+export function selectcount() {
+  return request({
+    url: '/student/college/selectcount',
+    method: 'get',
+  })
+}
+
 // 查询所有的学院列表
 export function listAllCollege(query) {
   return request({

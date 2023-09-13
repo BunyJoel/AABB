@@ -8,7 +8,7 @@
           clearable
           @keyup.enter.native="handleQuery"
         /> -->
-        <el-select v-model="queryParams.couId" placeholder="请选择课程" clearable filterable @blur="selectBlur" @clear="selectClear">
+        <el-select v-model="queryParams.couId" @change="handleQuery" placeholder="请选择课程" clearable filterable @blur="selectBlur" @clear="selectClear">
           <el-option
           v-for="item in courseList"
           :key="item.couId"
@@ -23,7 +23,7 @@
           clearable
           @keyup.enter.native="handleQuery"
         /> -->
-        <el-select v-model="queryParams.majId" placeholder="请选择开设专业" clearable filterable @blur="selectBlur" @clear="selectClear">
+        <el-select v-model="queryParams.majId" @change="handleQuery" placeholder="请选择开设专业" clearable filterable @blur="selectBlur" @clear="selectClear">
           <el-option
           v-for="item in majorList"
           :key="item.majId"

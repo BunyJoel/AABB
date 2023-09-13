@@ -34,6 +34,12 @@ public class DbTeacherController extends BaseController
     @Autowired
     private IDbTeacherService dbTeacherService;
 
+    @PreAuthorize("@ss.hasPermi('student:teacher:selectcount')")
+    @GetMapping("/selectcount")
+    public String selectcount()
+    {
+        return dbTeacherService.selectcount();
+    }
 
     /**
      * 查询所有教师

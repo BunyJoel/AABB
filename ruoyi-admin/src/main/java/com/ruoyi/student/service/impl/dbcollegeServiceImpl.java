@@ -19,6 +19,11 @@ public class dbcollegeServiceImpl implements IdbcollegeService
     @Autowired
     private dbcollegeMapper dbcollegeMapper;
 
+    @Override
+    public String selectcount() {
+        return dbcollegeMapper.selectcount();
+    }
+
     /**
      * 查询学院
      * 

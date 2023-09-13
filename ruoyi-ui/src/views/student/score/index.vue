@@ -14,7 +14,7 @@
           v-model="queryParams.stuName"
           placeholder="请输入学生姓名"
           clearable
-          @keyup.enter.native="handleQuery"
+          @keyup.enter.native="Query"
         />
       </el-form-item>
       <el-form-item label="课程" prop="couId">
@@ -24,7 +24,7 @@
           clearable
           @keyup.enter.native="handleQuery"
         /> -->
-        <el-select v-model="queryParams.couId" placeholder="请选择课程" clearable filterable @blur="selectBlur" @clear="selectClear">
+        <el-select v-model="queryParams.couId" placeholder="请选择课程" @change="handleQuery" clearable filterable @blur="selectBlur" @clear="selectClear">
           <el-option
           v-for="item in courseList"
           :key="item.couId"
@@ -39,7 +39,7 @@
           clearable
           @keyup.enter.native="handleQuery"
         /> -->
-        <el-select v-model="queryParams.teaId" placeholder="请选择授课老师" clearable filterable @blur="selectBlur" @clear="selectClear">
+        <el-select v-model="queryParams.teaId" placeholder="请选择授课老师" @change="handleQuery" clearable filterable @blur="selectBlur" @clear="selectClear">
           <el-option
           v-for="item in teacherList"
           :key="item.teaId"

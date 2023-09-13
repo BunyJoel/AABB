@@ -1,5 +1,14 @@
 import request from '@/utils/request'
 
+// 查询专业数量
+export function selectmajorcount() {
+  return request({
+    url: '/student/major/selectcount',
+    method: 'get',
+  })
+}
+
+
 export function listAllMajor(query) {
   return request({
     url: '/student/major/listall',

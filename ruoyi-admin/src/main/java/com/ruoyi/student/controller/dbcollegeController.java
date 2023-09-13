@@ -36,6 +36,16 @@ public class dbcollegeController extends BaseController
 
 
     /**
+     * 查询学院数量
+     */
+    @PreAuthorize("@ss.hasPermi('student:college:selectcount')")
+    @GetMapping("/selectcount")
+    public String selectcount()
+    {
+        return dbcollegeService.selectcount();
+    }
+
+    /**
      * 查询所有的学院列表
      */
     @PreAuthorize("@ss.hasPermi('student:college:list')")

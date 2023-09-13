@@ -9,7 +9,7 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="授课老师" prop="teaName">
+      <el-form-item label="授课老师" @change="handleQuery" prop="teaName">
        <el-input
           v-model="queryParams.teaName"
           placeholder="请输入授课老师"
@@ -18,7 +18,7 @@
         />
       </el-form-item>
       <el-form-item label="考核方式" prop="couWay">
-        <el-select v-model="queryParams.couWay" placeholder="请选择考核方式" clearable>
+        <el-select v-model="queryParams.couWay" @change="handleQuery" placeholder="请选择考核方式" clearable>
           <el-option
             v-for="dict in dict.type.sys_exam_way"
             :key="dict.value"

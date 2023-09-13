@@ -1,5 +1,19 @@
 import request from '@/utils/request'
 
+// 查询教师数量
+export function selectteachercount() {
+  return request({
+    url: '/student/teacher/selectcount',
+    method: 'get',
+  })
+}
+// 查询学生数量
+export function selectstudentcount() {
+  return request({
+    url: '/student/student/selectcount',
+    method: 'get',
+  })
+}
 // 查询所有的教师列表
 export function listAllTeacher(query) {
   return request({

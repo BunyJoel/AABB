@@ -19,6 +19,11 @@ public class DbTeacherServiceImpl implements IDbTeacherService
     @Autowired
     private DbTeacherMapper dbTeacherMapper;
 
+    @Override
+    public String selectcount() {
+        return dbTeacherMapper.selectcount();
+    }
+
     /**
      * 查询教师管理
      * 

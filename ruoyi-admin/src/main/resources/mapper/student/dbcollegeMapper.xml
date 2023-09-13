@@ -24,7 +24,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectdbcollegeVo"/>
         where coll_id = #{collId}
     </select>
-        
+
+<!--    获取学院数量-->
+    <select id="selectcount" resultType="java.lang.String">
+        select count(coll_name) from db_college;
+    </select>
+
     <insert id="insertdbcollege" parameterType="dbcollege" useGeneratedKeys="true" keyProperty="collId">
         insert into db_college
         <trim prefix="(" suffix=")" suffixOverrides=",">

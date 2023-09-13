@@ -10,11 +10,15 @@ import com.ruoyi.common.core.domain.BaseEntity;
  * 学生管理对象 db_student
  * 
  * @author AABB
- * @date 2023-09-11
+ * @date 2023-09-13
  */
 public class DbStudent extends BaseEntity
 {
     private static final long serialVersionUID = 1L;
+
+    /** 编号 */
+    @Excel(name = "编号")
+    private Long stuId;
 
     /** 学号 */
     @Excel(name = "学号")
@@ -44,9 +48,18 @@ public class DbStudent extends BaseEntity
     @Excel(name = "生源地")
     private String stuAddress;
 
-    @Excel(name = "班级id")
-    private String clsId;
+    @Excel(name = "班级Id")
+    private Long clsId;
 
+    public void setStuId(Long stuId) 
+    {
+        this.stuId = stuId;
+    }
+
+    public Long getStuId() 
+    {
+        return stuId;
+    }
     public void setStuNumber(String stuNumber) 
     {
         this.stuNumber = stuNumber;
@@ -111,17 +124,18 @@ public class DbStudent extends BaseEntity
         return stuAddress;
     }
 
-    public String getClsId() {
+    public Long getClsId() {
         return clsId;
     }
 
-    public void setClsId(String clsId) {
+    public void setClsId(Long clsId) {
         this.clsId = clsId;
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
+            .append("stuId", getStuId())
             .append("stuNumber", getStuNumber())
             .append("stuName", getStuName())
             .append("clsName", getClsName())

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.student.mapper.DbCollIdMapper">
+
+    <select id="getAvgScore" resultType="com.ruoyi.student.pojo.Information">
+        select cou_name as name,ROUND(AVG(score)) as value
+        from
+        db_course c
+        inner join
+        db_score s
+        on
+        c.cou_id = s.cou_id
+        INNER JOIN
+        db_set ss
+        on
+        c.cou_id = ss.cou_id
+        INNER JOIN
+        db_major m
+        on
+        ss.maj_id = m.maj_id
+        <where>
+            <if test="collId != 0 "> and m.coll_id = #{collId}</if>
+        </where>
+        GROUP BY cou_name;
+    </select>
+</mapper>

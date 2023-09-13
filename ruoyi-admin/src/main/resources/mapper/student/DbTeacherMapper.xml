@@ -29,7 +29,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <include refid="selectDbTeacherVo"/>
         where t.tea_id = #{teaId}
     </select>
-        
+    <select id="selectcount" resultType="java.lang.String">
+        select count(tea_name) from db_teacher;
+    </select>
+
     <insert id="insertDbTeacher" parameterType="DbTeacher" useGeneratedKeys="true" keyProperty="teaId">
         insert into db_teacher
         <trim prefix="(" suffix=")" suffixOverrides=",">

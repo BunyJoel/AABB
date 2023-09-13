@@ -34,6 +34,14 @@ public class DbMajorController extends BaseController
     @Autowired
     private IDbMajorService dbMajorService;
 
+
+    @PreAuthorize("@ss.hasPermi('student:major:selectcount')")
+    @GetMapping("/selectcount")
+    public String selectcount()
+    {
+        return dbMajorService.selectcount();
+    }
+
     /**
      * 查询所有的列表
      */

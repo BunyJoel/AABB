@@ -11,7 +11,7 @@ import com.ruoyi.student.service.IDbStudentService;
  * 学生管理Service业务层处理
  * 
  * @author AABB
- * @date 2023-09-11
+ * @date 2023-09-13
  */
 @Service
 public class DbStudentServiceImpl implements IDbStudentService 
@@ -19,16 +19,21 @@ public class DbStudentServiceImpl implements IDbStudentService
     @Autowired
     private DbStudentMapper dbStudentMapper;
 
+    @Override
+    public String selectcount() {
+        return dbStudentMapper.selectcount();
+    }
+
     /**
      * 查询学生管理
      * 
-     * @param stuNumber 学生管理主键
+     * @param stuId 学生管理主键
      * @return 学生管理
      */
     @Override
-    public DbStudent selectDbStudentByStuNumber(String stuNumber)
+    public DbStudent selectDbStudentByStuId(Long stuId)
     {
-        return dbStudentMapper.selectDbStudentByStuNumber(stuNumber);
+        return dbStudentMapper.selectDbStudentByStuId(stuId);
     }
 
     /**
@@ -70,24 +75,24 @@ public class DbStudentServiceImpl implements IDbStudentService
     /**
      * 批量删除学生管理
      * 
-     * @param stuNumbers 需要删除的学生管理主键
+     * @param stuIds 需要删除的学生管理主键
      * @return 结果
      */
     @Override
-    public int deleteDbStudentByStuNumbers(String[] stuNumbers)
+    public int deleteDbStudentByStuIds(Long[] stuIds)
     {
-        return dbStudentMapper.deleteDbStudentByStuNumbers(stuNumbers);
+        return dbStudentMapper.deleteDbStudentByStuIds(stuIds);
     }
 
     /**
      * 删除学生管理信息
      * 
-     * @param stuNumber 学生管理主键
+     * @param stuId 学生管理主键
      * @return 结果
      */
     @Override
-    public int deleteDbStudentByStuNumber(String stuNumber)
+    public int deleteDbStudentByStuId(Long stuId)
     {
-        return dbStudentMapper.deleteDbStudentByStuNumber(stuNumber);
+        return dbStudentMapper.deleteDbStudentByStuId(stuId);
     }
 }

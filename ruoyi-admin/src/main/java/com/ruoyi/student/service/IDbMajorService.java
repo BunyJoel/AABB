@@ -11,6 +11,9 @@ import com.ruoyi.student.domain.DbMajor;
  */
 public interface IDbMajorService 
 {
+
+    String selectcount();
+
     /**
      * 查询专业管理
      * 

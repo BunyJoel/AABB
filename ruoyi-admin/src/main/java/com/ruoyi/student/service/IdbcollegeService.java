@@ -11,6 +11,10 @@ import com.ruoyi.student.domain.dbcollege;
  */
 public interface IdbcollegeService 
 {
+
+
+    String selectcount();
+
     /**
      * 查询学院
      * 

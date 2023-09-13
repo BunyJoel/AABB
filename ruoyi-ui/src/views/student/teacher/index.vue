@@ -208,7 +208,7 @@ export default {
           { required: true, message: "性别不能为空", trigger: "change" }
         ],
         collId: [
-          { required: true, message: "学院id不能为空", trigger: "blur" }
+          { required: true, message: "学院不能为空", trigger: "blur" }
         ]
       }
     };

@@ -16,7 +16,7 @@
           clearable
           @keyup.enter.native="handleQuery"
         /> -->
-        <el-select v-model="queryParams.majId" placeholder="请选择所属专业"  clearable filterable @blur="selectBlur" @clear="selectClear">
+        <el-select v-model="queryParams.majId" @change="handleQuery" placeholder="请选择所属专业"  clearable filterable @blur="selectBlur" @clear="selectClear">
           <el-option
           v-for="item in majorList"
           :key="item.majId"
@@ -178,7 +178,7 @@ export default {
           { required: true, message: "班级名称不能为空", trigger: "blur" }
         ],
         majId: [
-          { required: true, message: "专业id不能为空", trigger: "blur" }
+          { required: true, message: "专业不能为空", trigger: "blur" }
         ]
       }
     };

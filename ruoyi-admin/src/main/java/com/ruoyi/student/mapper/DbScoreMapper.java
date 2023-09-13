@@ -2,6 +2,8 @@ package com.ruoyi.student.mapper;
 
 import java.util.List;
 import com.ruoyi.student.domain.DbScore;
+import com.ruoyi.student.pojo.Information;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 成绩管理Mapper接口
@@ -11,6 +13,9 @@ import com.ruoyi.student.domain.DbScore;
  */
 public interface DbScoreMapper 
 {
+
+    List<Information> getAvgScore(@Param("collId") Long collId);
+
     /**
      * 查询成绩管理
      * 

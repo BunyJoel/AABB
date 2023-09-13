@@ -5,6 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.ruoyi.student.mapper.DbStudentMapper">
     
     <resultMap type="DbStudent" id="DbStudentResult">
+        <result property="stuId"    column="stu_id"    />
         <result property="stuNumber"    column="stu_number"    />
         <result property="stuName"    column="stu_name"    />
         <result property="clsName"    column="cls_name"    />
@@ -16,72 +17,70 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectDbStudentVo">
-        select s.stu_number, s.stu_name, c.cls_id,c.cls_name, s.stu_gender, s.stu_phone, s.stu_avg, s.stu_address
-        from
-            db_student s
-                inner join
-                db_class c
-                    on
-                        s.cls_id = c.cls_id
+        select stu_id, stu_number, stu_name, db_student.cls_id, cls_name, stu_gender, stu_phone, stu_avg, stu_address from db_student inner join db_class on db_student.cls_id = db_class.cls_id
     </sql>
 
     <select id="selectDbStudentList" parameterType="DbStudent" resultMap="DbStudentResult">
         <include refid="selectDbStudentVo"/>
         <where>  
-            <if test="stuNumber != null  and stuNumber != ''"> and s.stu_number = #{stuNumber}</if>
-            <if test="stuName != null  and stuName != ''"> and s.stu_name like concat('%', #{stuName}, '%')</if>
-            <if test="clsId != null  and clsId != ''"> and c.cls_id like concat('%', #{clsId}, '%')</if>
+            <if test="stuNumber != null  and stuNumber != ''"> and stu_number = #{stuNumber}</if>
+            <if test="stuName != null  and stuName != ''"> and stu_name like concat('%', #{stuName}, '%')</if>
+            <if test="clsId != null "> and db_student.cls_id like concat('%', #{clsId}, '%')</if>
         </where>
     </select>
     
-    <select id="selectDbStudentByStuNumber" parameterType="String" resultMap="DbStudentResult">
+    <select id="selectDbStudentByStuId" parameterType="Long" resultMap="DbStudentResult">
         <include refid="selectDbStudentVo"/>
-        where s.stu_number = #{stuNumber}
+        where stu_id = #{stuId}
     </select>
-        
-    <insert id="insertDbStudent" parameterType="DbStudent">
+    <select id="selectcount" resultType="java.lang.String">
+        select count(stu_name) from db_student;
+    </select>
+
+    <insert id="insertDbStudent" parameterType="DbStudent" useGeneratedKeys="true" keyProperty="stuId">
         insert into db_student
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="stuNumber != null and stuNumber != ''">stu_number,</if>
             <if test="stuName != null and stuName != ''">stu_name,</if>
             <if test="clsId != null and clsId != ''">cls_id,</if>
             <if test="stuGender != null and stuGender != ''">stu_gender,</if>
-            <if test="stuPhone != null and stuPhone != ''">stu_phone,</if>
+            <if test="stuPhone != null">stu_phone,</if>
             <if test="stuAvg != null">stu_avg,</if>
-            <if test="stuAddress != null and stuAddress != ''">stu_address,</if>
+            <if test="stuAddress != null">stu_address,</if>
          </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="stuNumber != null and stuNumber != ''">#{stuNumber},</if>
             <if test="stuName != null and stuName != ''">#{stuName},</if>
             <if test="clsId != null and clsId != ''">#{clsId},</if>
             <if test="stuGender != null and stuGender != ''">#{stuGender},</if>
-            <if test="stuPhone != null and stuPhone != ''">#{stuPhone},</if>
+            <if test="stuPhone != null">#{stuPhone},</if>
             <if test="stuAvg != null">#{stuAvg},</if>
-            <if test="stuAddress != null and stuAddress != ''">#{stuAddress},</if>
+            <if test="stuAddress != null">#{stuAddress},</if>
          </trim>
     </insert>
 
     <update id="updateDbStudent" parameterType="DbStudent">
         update db_student
         <trim prefix="SET" suffixOverrides=",">
+            <if test="stuNumber != null and stuNumber != ''">stu_number = #{stuNumber},</if>
             <if test="stuName != null and stuName != ''">stu_name = #{stuName},</if>
             <if test="clsId != null and clsId != ''">cls_id = #{clsId},</if>
             <if test="stuGender != null and stuGender != ''">stu_gender = #{stuGender},</if>
-            <if test="stuPhone != null and stuPhone != ''">stu_phone = #{stuPhone},</if>
+            <if test="stuPhone != null">stu_phone = #{stuPhone},</if>
             <if test="stuAvg != null">stu_avg = #{stuAvg},</if>
-            <if test="stuAddress != null and stuAddress != ''">stu_address = #{stuAddress},</if>
+            <if test="stuAddress != null">stu_address = #{stuAddress},</if>
         </trim>
-        where stu_number = #{stuNumber}
+        where stu_id = #{stuId}
     </update>
 
-    <delete id="deleteDbStudentByStuNumber" parameterType="String">
-        delete from db_student where stu_number = #{stuNumber}
+    <delete id="deleteDbStudentByStuId" parameterType="Long">
+        delete from db_student where stu_id = #{stuId}
     </delete>
 
-    <delete id="deleteDbStudentByStuNumbers" parameterType="String">
-        delete from db_student where stu_number in 
-        <foreach item="stuNumber" collection="array" open="(" separator="," close=")">
-            #{stuNumber}
+    <delete id="deleteDbStudentByStuIds" parameterType="String">
+        delete from db_student where stu_id in 
+        <foreach item="stuId" collection="array" open="(" separator="," close=")">
+            #{stuId}
         </foreach>
     </delete>
 </mapper>

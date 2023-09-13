@@ -25,7 +25,7 @@ import com.ruoyi.common.core.page.TableDataInfo;
  * 学生管理Controller
  * 
  * @author AABB
- * @date 2023-09-11
+ * @date 2023-09-13
  */
 @RestController
 @RequestMapping("/student/student")
@@ -46,6 +46,14 @@ public class DbStudentController extends BaseController
         return getDataTable(list);
     }
 
+    @PreAuthorize("@ss.hasPermi('student:student:selectcount')")
+    @GetMapping("/selectcount")
+    public String selectcount()
+    {
+
+        return dbStudentService.selectcount();
+    }
+
     /**
      * 导出学生管理列表
      */
@@ -63,10 +71,10 @@ public class DbStudentController extends BaseController
      * 获取学生管理详细信息
      */
     @PreAuthorize("@ss.hasPermi('student:student:query')")
-    @GetMapping(value = "/{stuNumber}")
-    public AjaxResult getInfo(@PathVariable("stuNumber") String stuNumber)
+    @GetMapping(value = "/{stuId}")
+    public AjaxResult getInfo(@PathVariable("stuId") Long stuId)
     {
-        return success(dbStudentService.selectDbStudentByStuNumber(stuNumber));
+        return success(dbStudentService.selectDbStudentByStuId(stuId));
     }
 
     /**
@@ -96,9 +104,9 @@ public class DbStudentController extends BaseController
      */
     @PreAuthorize("@ss.hasPermi('student:student:remove')")
     @Log(title = "学生管理", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{stuNumbers}")
-    public AjaxResult remove(@PathVariable String[] stuNumbers)
+	@DeleteMapping("/{stuIds}")
+    public AjaxResult remove(@PathVariable Long[] stuIds)
     {
-        return toAjax(dbStudentService.deleteDbStudentByStuNumbers(stuNumbers));
+        return toAjax(dbStudentService.deleteDbStudentByStuIds(stuIds));
     }
 }

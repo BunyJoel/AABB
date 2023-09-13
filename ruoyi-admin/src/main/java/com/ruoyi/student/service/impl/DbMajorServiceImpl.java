@@ -19,6 +19,11 @@ public class DbMajorServiceImpl implements IDbMajorService
     @Autowired
     private DbMajorMapper dbMajorMapper;
 
+    @Override
+    public String selectcount() {
+        return dbMajorMapper.selectcount();
+    }
+
     /**
      * 查询专业管理
      * 

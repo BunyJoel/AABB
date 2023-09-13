@@ -2,6 +2,7 @@ package com.ruoyi.student.service;
 
 import java.util.List;
 import com.ruoyi.student.domain.DbScore;
+import com.ruoyi.student.pojo.Information;
 
 /**
  * 成绩管理Service接口
@@ -11,6 +12,13 @@ import com.ruoyi.student.domain.DbScore;
  */
 public interface IDbScoreService 
 {
+    /**
+     * 统计平均分
+     * @return
+     */
+
+    public List<Information> getAvgScore(Long collId);
+
     /**
      * 查询成绩管理
      * 

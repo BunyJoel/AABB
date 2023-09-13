@@ -11,6 +11,10 @@ import com.ruoyi.student.domain.DbMajor;
  */
 public interface DbMajorMapper 
 {
+
+
+    String selectcount();
+
     /**
      * 查询专业管理
      * 
