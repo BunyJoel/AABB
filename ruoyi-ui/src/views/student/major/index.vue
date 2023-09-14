@@ -78,7 +78,7 @@
 
     <el-table v-loading="loading" :data="majorList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="专业id" align="center" prop="majId" />
+      <el-table-column label="专业编号" align="center" prop="majId" />
       <el-table-column label="专业名称" align="center" prop="majName" />
       <el-table-column label="所属学院" align="center" prop="collName" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
@@ -113,7 +113,8 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="专业名称" prop="majName">
-          <el-input v-model="form.majName" placeholder="请输入专业名称" />
+          <el-input v-model="form.majName" placeholder="请输入专业名称" maxlength="20"
+  show-word-limit />
         </el-form-item>
         <el-form-item label="学院" prop="collId">
           <!-- <el-input v-model="form.collId" placeholder="请输入学院id" /> -->

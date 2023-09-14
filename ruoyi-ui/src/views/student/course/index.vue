@@ -123,7 +123,8 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="课程名称" prop="couName">
-          <el-input v-model="form.couName" placeholder="请输入课程名称" />
+          <el-input v-model="form.couName" placeholder="请输入课程名称" maxlength="20"
+  show-word-limit />
         </el-form-item>
         <el-form-item label="授课老师" prop="teaId">
           <!-- <el-input v-model="form.teaName" placeholder="请输入授课老师" /> -->
@@ -136,10 +137,10 @@
           </el-select>
         </el-form-item>
         <el-form-item label="学分" prop="couCredit">
-          <el-input v-model="form.couCredit" placeholder="请输入学分" />
+          <el-input-number v-model="form.couCredit" placeholder="请输入学分" />
         </el-form-item>
-        <el-form-item label="学时" prop="couHour">
-          <el-input v-model="form.couHour" placeholder="请输入学时" />
+        <el-form-item label="学时" onkeyup="this.value=this.value.replace(/[^\d.]/g,'');" prop="couHour">
+          <el-input-number v-model="form.couHour" placeholder="请输入学时" />
         </el-form-item>
         <el-form-item label="考核方式" prop="couWay">
           <el-select v-model="form.couWay" placeholder="请选择考核方式">
@@ -206,14 +207,28 @@ export default {
         couName: [
           { required: true, message: "课程名称不能为空", trigger: "blur" }
         ],
-        teaName: [
-          { required: true, message: "教师id不能为空", trigger: "blur" }
+        teaId: [
+          { required: true, message: "教师不能为空", trigger: "blur" }
         ],
         couCredit: [
-          { required: true, message: "学分不能为空", trigger: "blur" }
+          { required: true, message: "学分不能为空", trigger: "blur" },
+          {
+            type: "number",
+            min: 2,
+            max: 4,
+            message: "学分必须在2到4之间",
+            trigger: "blur"
+          }
         ],
         couHour: [
-          { required: true, message: "学时不能为空", trigger: "blur" }
+          { required: true, message: "学时不能为空", trigger: "blur" },
+          {
+            type: "number",
+            min: 10,
+            max: 20,
+            message: "学时必须在10到20之间",
+            trigger: "blur"
+          }
         ],
         couWay: [
           { required: true, message: "考核方式不能为空", trigger: "change" }

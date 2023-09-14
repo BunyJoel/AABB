@@ -63,7 +63,7 @@
 
     <el-table v-loading="loading" :data="collegeList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="学院id" align="center" prop="collId" />
+      <el-table-column label="学院编号" align="center" prop="collId" />
       <el-table-column label="学院名称" align="center" prop="collName" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -97,7 +97,8 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="学院名称" prop="collName">
-          <el-input v-model="form.collName" placeholder="请输入学院名称" />
+          <el-input v-model="form.collName" placeholder="请输入学院名称" 
+          maxlength="20" show-word-limit />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">

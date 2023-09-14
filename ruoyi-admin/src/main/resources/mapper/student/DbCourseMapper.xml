@@ -25,6 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="teaName != null  and teaName != ''"> and t.tea_name like concat('%', #{teaName}, '%')</if>
             <if test="couWay != null  and couWay != ''"> and c.cou_way = #{couWay}</if>
         </where>
+        order by c.cou_id asc
     </select>
     
     <select id="selectDbCourseByCouId" parameterType="Long" resultMap="DbCourseResult">

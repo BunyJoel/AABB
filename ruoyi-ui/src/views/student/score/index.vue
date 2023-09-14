@@ -106,7 +106,7 @@
       <el-table-column label="学生姓名" align="center" prop="stuName" />
       <el-table-column label="课程" align="center" prop="couName" />
       <el-table-column label="授课老师" align="center" prop="teaName" />
-      <el-table-column label="成绩" align="center" prop="score" />
+      <el-table-column sortable label="成绩" align="center" prop="score" />
       <el-table-column label="绩点" align="center" prop="gpa" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -140,7 +140,7 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="成绩" prop="score">
-          <el-input v-model="form.score" placeholder="请输入成绩" />
+          <el-input-number v-model="form.score" placeholder="请输入成绩" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -198,8 +198,16 @@ export default {
       // 表单校验
       rules: {
         score: [
-          { required: true, message: "成绩不能为空", trigger: "blur" }
+          { required: true, message: "成绩不能为空", trigger: "blur" },
+          {
+            type: "number",
+            min: 0,
+            max: 100,
+            message: "成绩必须在0到100之间",
+            trigger: "blur"
+          }
         ],
+         
       }
     };
   },

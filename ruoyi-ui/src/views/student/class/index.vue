@@ -78,7 +78,7 @@
 
     <el-table v-loading="loading" :data="classList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="班级id" align="center" prop="clsId" />
+      <el-table-column label="班级编号" align="center" prop="clsId" />
       <el-table-column label="班级名称" align="center" prop="clsName" />
       <el-table-column label="所属专业" align="center" prop="majName" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
@@ -113,7 +113,8 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="班级名称" prop="clsName">
-          <el-input v-model="form.clsName" placeholder="请输入班级名称" />
+          <el-input v-model="form.clsName" placeholder="请输入班级名称" maxlength="10"
+  show-word-limit />
         </el-form-item>
         <el-form-item label="所属专业" prop="majId">
          <!-- <el-input v-model="form.majId" placeholder="请输入专业id" /> -->

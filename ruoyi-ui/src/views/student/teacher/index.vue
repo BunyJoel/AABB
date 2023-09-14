@@ -128,7 +128,8 @@
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="教师名称" prop="teaName">
-          <el-input v-model="form.teaName" placeholder="请输入教师名称" />
+          <el-input v-model="form.teaName" placeholder="请输入教师名称" maxlength="10"
+  show-word-limit />
         </el-form-item>
         <el-form-item label="性别" prop="teaGender">
           <el-select v-model="form.teaGender" placeholder="请选择性别">

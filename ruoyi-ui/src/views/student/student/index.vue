@@ -90,7 +90,7 @@
         </template>
       </el-table-column>
       <el-table-column label="电话" align="center" prop="stuPhone" />
-      <el-table-column label="平均绩点" align="center" prop="stuAvg" />
+      <el-table-column sortable label="平均绩点" align="center" prop="stuAvg" />
       <el-table-column label="生源地" align="center" prop="stuAddress" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -127,7 +127,8 @@
           <el-input v-model="form.stuNumber" placeholder="请输入学生学号" />
         </el-form-item>
         <el-form-item label="学生姓名" prop="stuName">
-          <el-input v-model="form.stuName" placeholder="请输入学生姓名" />
+          <el-input v-model="form.stuName" placeholder="请输入学生姓名" maxlength="10"
+  show-word-limit />
         </el-form-item>
         <el-form-item label="班级" prop="clsId">
           <!-- <el-input v-model="form.clsName" placeholder="请输入班级id" /> -->
@@ -207,17 +208,29 @@ export default {
       // 表单校验
       rules: {
         stuNumber: [
-          { required: true, message: "学号不能为空", trigger: "blur" }
+          { required: true, message: "学号不能为空", trigger: "blur" },
+           {
+              pattern: /^222\d{4}$/,
+              message: "学号格式错误",
+              trigger: "blur"
+            }
         ],
         stuName: [
           { required: true, message: "学生姓名不能为空", trigger: "blur" }
         ],
-        clsName: [
+        clsId: [
           { required: true, message: "班级不能为空", trigger: "blur" }
         ],
         stuGender: [
           { required: true, message: "性别不能为空", trigger: "change" }
         ],
+        stuPhone: [
+           {
+              pattern: /^[0-9]+$/,
+              message: "电话格式错误",
+              trigger: "blur"
+            }
+        ]
       }
     };
   },

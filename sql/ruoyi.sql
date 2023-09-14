@@ -11,7 +11,7 @@
  Target Server Version : 80028
  File Encoding         : 65001
 
- Date: 13/09/2023 20:56:26
+ Date: 14/09/2023 10:07:05
 */
 
 SET NAMES utf8mb4;
@@ -91,7 +91,7 @@ INSERT INTO `db_course` VALUES (9, '系统分析与设计', 10, 4.0, 20, '2');
 INSERT INTO `db_course` VALUES (10, '互联网应用开发', 11, 4.0, 20, '1');
 INSERT INTO `db_course` VALUES (11, '计算机系统基础', 12, 4.0, 20, '1');
 INSERT INTO `db_course` VALUES (12, '软件测试', 13, 4.0, 20, '2');
-INSERT INTO `db_course` VALUES (13, '计算机网络', 14, 4.0, 20, '1');
+INSERT INTO `db_course` VALUES (13, '计算机网络', 14, 3.0, 20, '2');
 INSERT INTO `db_course` VALUES (14, '数据结构与算法', 15, 4.0, 20, '2');
 INSERT INTO `db_course` VALUES (15, '线性代数', 16, 4.0, 20, '1');
 INSERT INTO `db_course` VALUES (16, '密码学与网络安全', 17, 4.0, 20, '1');
@@ -101,6 +101,36 @@ INSERT INTO `db_course` VALUES (19, '电子技术基础', 10, 4.0, 20, '2');
 INSERT INTO `db_course` VALUES (20, 'Linux程序设计', 11, 4.0, 20, '1');
 INSERT INTO `db_course` VALUES (21, '嵌入式系统基础', 12, 4.0, 20, '1');
 INSERT INTO `db_course` VALUES (22, '单片机原理与接口', 13, 4.0, 20, '1');
+INSERT INTO `db_course` VALUES (23, '经济学基础', 17, 4.0, 20, '1');
+INSERT INTO `db_course` VALUES (24, '经济数学基础', 18, 4.0, 20, '2');
+INSERT INTO `db_course` VALUES (25, '会计学', 19, 4.0, 20, '1');
+INSERT INTO `db_course` VALUES (26, '审计学', 23, 4.0, 20, '2');
+INSERT INTO `db_course` VALUES (27, '公司理财', 24, 4.0, 20, '1');
+INSERT INTO `db_course` VALUES (28, '管理学', 17, 4.0, 20, '2');
+INSERT INTO `db_course` VALUES (29, '微观经济学', 24, 4.0, 20, '2');
+INSERT INTO `db_course` VALUES (30, '宏观经济学', 25, 4.0, 20, '2');
+INSERT INTO `db_course` VALUES (31, '运筹学', 21, 4.0, 20, '2');
+INSERT INTO `db_course` VALUES (32, '消费心理学', 27, 4.0, 20, '1');
+INSERT INTO `db_course` VALUES (33, '财务管理', 28, 4.0, 20, '2');
+INSERT INTO `db_course` VALUES (34, '经济法', 32, 4.0, 20, '2');
+INSERT INTO `db_course` VALUES (35, '人力资源管理', 30, 4.0, 20, '1');
+INSERT INTO `db_course` VALUES (36, '经营管理', 28, 4.0, 20, '2');
+INSERT INTO `db_course` VALUES (37, '会计实务', 32, 4.0, 20, '1');
+INSERT INTO `db_course` VALUES (38, '营销策划', 31, 4.0, 20, '1');
+INSERT INTO `db_course` VALUES (39, '网页配色', 31, 4.0, 20, '2');
+INSERT INTO `db_course` VALUES (40, '电商管理务实', 30, 4.0, 20, '1');
+INSERT INTO `db_course` VALUES (41, '国际贸易理论', 30, 4.0, 20, '1');
+INSERT INTO `db_course` VALUES (42, 'PS设计', 20, 4.0, 20, '2');
+INSERT INTO `db_course` VALUES (43, '管理统计学', 28, 4.0, 20, '2');
+INSERT INTO `db_course` VALUES (44, '物流运筹学', 21, 4.0, 20, '1');
+INSERT INTO `db_course` VALUES (45, '采购与供应管理', 23, 4.0, 20, '2');
+INSERT INTO `db_course` VALUES (46, '商品学概论', 21, 4.0, 20, '1');
+INSERT INTO `db_course` VALUES (47, '港口物流', 28, 4.0, 20, '1');
+INSERT INTO `db_course` VALUES (48, '计量经济学', 25, 4.0, 20, '1');
+INSERT INTO `db_course` VALUES (49, '商务数据分析', 31, 4.0, 20, '2');
+INSERT INTO `db_course` VALUES (50, '大数据基础设施', 15, 4.0, 20, '2');
+INSERT INTO `db_course` VALUES (51, '数据库系统', 30, 4.0, 20, '1');
+INSERT INTO `db_course` VALUES (52, '数据仓库与数据挖掘', 30, 4.0, 20, '2');
 
 -- ----------------------------
 -- Table structure for db_major
@@ -205,6 +235,131 @@ INSERT INTO `db_score` VALUES (66, '11', '学生J', 14, 15, 76.0, 3.8);
 INSERT INTO `db_score` VALUES (67, '11', '学生J', 15, 16, 89.0, 4.5);
 INSERT INTO `db_score` VALUES (68, '11', '学生J', 16, 17, 45.0, 2.2);
 INSERT INTO `db_score` VALUES (69, '11', '学生J', 17, 18, 67.0, 3.4);
+INSERT INTO `db_score` VALUES (70, '12', '学生AA', 18, 9, 35.0, 1.8);
+INSERT INTO `db_score` VALUES (71, '12', '学生AA', 19, 10, 63.0, 3.2);
+INSERT INTO `db_score` VALUES (72, '12', '学生AA', 20, 11, 96.0, 4.8);
+INSERT INTO `db_score` VALUES (73, '12', '学生AA', 21, 12, 96.0, 4.8);
+INSERT INTO `db_score` VALUES (74, '12', '学生AA', 22, 13, 63.0, 3.2);
+INSERT INTO `db_score` VALUES (75, '13', '学生BB', 18, 9, 75.0, 3.8);
+INSERT INTO `db_score` VALUES (76, '13', '学生BB', 19, 10, 96.0, 4.8);
+INSERT INTO `db_score` VALUES (77, '13', '学生BB', 20, 11, 76.0, 3.8);
+INSERT INTO `db_score` VALUES (78, '13', '学生BB', 21, 12, 74.0, 3.7);
+INSERT INTO `db_score` VALUES (79, '13', '学生BB', 22, 13, 85.0, 4.2);
+INSERT INTO `db_score` VALUES (80, '14', '学生CC', 18, 9, 96.0, 4.8);
+INSERT INTO `db_score` VALUES (81, '14', '学生CC', 19, 10, 63.0, 3.2);
+INSERT INTO `db_score` VALUES (82, '14', '学生CC', 20, 11, 36.0, 1.8);
+INSERT INTO `db_score` VALUES (83, '14', '学生CC', 21, 12, 65.0, 3.2);
+INSERT INTO `db_score` VALUES (84, '14', '学生CC', 22, 13, 96.0, 4.8);
+INSERT INTO `db_score` VALUES (85, '15', '学生DD', 18, 9, 78.0, 3.9);
+INSERT INTO `db_score` VALUES (86, '15', '学生DD', 19, 10, 41.0, 2.1);
+INSERT INTO `db_score` VALUES (87, '15', '学生DD', 20, 11, 45.0, 2.2);
+INSERT INTO `db_score` VALUES (88, '15', '学生DD', 21, 12, 68.0, 3.4);
+INSERT INTO `db_score` VALUES (89, '15', '学生DD', 22, 13, 74.0, 3.7);
+INSERT INTO `db_score` VALUES (90, '16', '学生EE', 18, 9, 74.0, 3.7);
+INSERT INTO `db_score` VALUES (91, '16', '学生EE', 19, 10, 71.0, 3.6);
+INSERT INTO `db_score` VALUES (92, '16', '学生EE', 20, 11, 75.0, 3.8);
+INSERT INTO `db_score` VALUES (93, '16', '学生EE', 21, 12, 74.0, 3.7);
+INSERT INTO `db_score` VALUES (94, '16', '学生EE', 22, 13, 93.0, 4.7);
+INSERT INTO `db_score` VALUES (95, '17', '学生FF', 23, 17, 68.0, 3.4);
+INSERT INTO `db_score` VALUES (96, '17', '学生FF', 24, 18, 74.0, 3.7);
+INSERT INTO `db_score` VALUES (97, '17', '学生FF', 25, 19, 83.0, 4.2);
+INSERT INTO `db_score` VALUES (98, '17', '学生FF', 26, 23, 87.0, 4.4);
+INSERT INTO `db_score` VALUES (99, '17', '学生FF', 27, 24, 47.0, 2.4);
+INSERT INTO `db_score` VALUES (100, '18', '学生GG', 23, 17, 86.0, 4.3);
+INSERT INTO `db_score` VALUES (101, '18', '学生GG', 24, 18, 27.0, 1.4);
+INSERT INTO `db_score` VALUES (102, '18', '学生GG', 25, 19, 87.0, 4.4);
+INSERT INTO `db_score` VALUES (103, '18', '学生GG', 26, 23, 88.0, 4.4);
+INSERT INTO `db_score` VALUES (104, '18', '学生GG', 27, 24, 86.0, 4.3);
+INSERT INTO `db_score` VALUES (105, '19', '学生HH', 23, 17, 47.0, 2.4);
+INSERT INTO `db_score` VALUES (106, '19', '学生HH', 24, 18, 68.0, 3.4);
+INSERT INTO `db_score` VALUES (107, '19', '学生HH', 25, 19, 72.0, 3.6);
+INSERT INTO `db_score` VALUES (108, '19', '学生HH', 26, 23, 87.0, 4.4);
+INSERT INTO `db_score` VALUES (109, '19', '学生HH', 27, 24, 74.0, 3.7);
+INSERT INTO `db_score` VALUES (110, '20', '学生II', 23, 17, 68.0, 3.4);
+INSERT INTO `db_score` VALUES (111, '20', '学生II', 24, 18, 86.0, 4.3);
+INSERT INTO `db_score` VALUES (112, '20', '学生II', 25, 19, 87.0, 4.4);
+INSERT INTO `db_score` VALUES (113, '20', '学生II', 26, 23, 68.0, 3.4);
+INSERT INTO `db_score` VALUES (114, '20', '学生II', 27, 24, 78.0, 3.9);
+INSERT INTO `db_score` VALUES (115, '21', '学生JJ', 23, 17, 78.0, 3.9);
+INSERT INTO `db_score` VALUES (116, '21', '学生JJ', 24, 18, 74.0, 3.7);
+INSERT INTO `db_score` VALUES (117, '21', '学生JJ', 25, 19, 68.0, 3.4);
+INSERT INTO `db_score` VALUES (118, '21', '学生JJ', 26, 23, 86.0, 4.3);
+INSERT INTO `db_score` VALUES (119, '21', '学生JJ', 27, 24, 78.0, 3.9);
+INSERT INTO `db_score` VALUES (120, '22', '学生AAA', 28, 17, 68.0, 3.4);
+INSERT INTO `db_score` VALUES (121, '22', '学生AAA', 29, 24, 77.0, 3.8);
+INSERT INTO `db_score` VALUES (122, '22', '学生AAA', 30, 25, 68.0, 3.4);
+INSERT INTO `db_score` VALUES (123, '22', '学生AAA', 31, 21, 77.0, 3.8);
+INSERT INTO `db_score` VALUES (124, '22', '学生AAA', 32, 27, 47.0, 2.4);
+INSERT INTO `db_score` VALUES (125, '23', '学生BBB', 28, 17, 68.0, 3.4);
+INSERT INTO `db_score` VALUES (126, '23', '学生BBB', 29, 24, 69.0, 3.5);
+INSERT INTO `db_score` VALUES (127, '23', '学生BBB', 30, 25, 78.0, 3.9);
+INSERT INTO `db_score` VALUES (128, '23', '学生BBB', 31, 21, 99.0, 5.0);
+INSERT INTO `db_score` VALUES (129, '23', '学生BBB', 32, 27, 78.0, 3.9);
+INSERT INTO `db_score` VALUES (130, '24', '学生CCC', 28, 17, 78.0, 3.9);
+INSERT INTO `db_score` VALUES (131, '24', '学生CCC', 29, 24, 88.0, 4.4);
+INSERT INTO `db_score` VALUES (132, '24', '学生CCC', 30, 25, 68.0, 3.4);
+INSERT INTO `db_score` VALUES (133, '24', '学生CCC', 31, 21, 78.0, 3.9);
+INSERT INTO `db_score` VALUES (134, '24', '学生CCC', 32, 27, 47.0, 2.4);
+INSERT INTO `db_score` VALUES (135, '25', '学生A', 33, 28, 87.0, 4.4);
+INSERT INTO `db_score` VALUES (136, '25', '学生A', 34, 32, 68.0, 3.4);
+INSERT INTO `db_score` VALUES (137, '25', '学生A', 35, 30, 87.0, 4.4);
+INSERT INTO `db_score` VALUES (138, '25', '学生A', 36, 28, 68.0, 3.4);
+INSERT INTO `db_score` VALUES (139, '25', '学生A', 37, 32, 47.0, 2.4);
+INSERT INTO `db_score` VALUES (140, '26', '学生B', 33, 28, 89.0, 4.5);
+INSERT INTO `db_score` VALUES (141, '26', '学生B', 34, 32, 87.0, 4.4);
+INSERT INTO `db_score` VALUES (142, '26', '学生B', 35, 30, 68.0, 3.4);
+INSERT INTO `db_score` VALUES (143, '26', '学生B', 36, 28, 69.0, 3.5);
+INSERT INTO `db_score` VALUES (144, '26', '学生B', 37, 32, 74.0, 3.7);
+INSERT INTO `db_score` VALUES (145, '27', '学生C', 33, 28, 69.0, 3.5);
+INSERT INTO `db_score` VALUES (146, '27', '学生C', 34, 32, 35.0, 1.8);
+INSERT INTO `db_score` VALUES (147, '27', '学生C', 35, 30, 58.0, 2.9);
+INSERT INTO `db_score` VALUES (148, '27', '学生C', 36, 28, 96.0, 4.8);
+INSERT INTO `db_score` VALUES (149, '27', '学生C', 37, 32, 47.0, 2.4);
+INSERT INTO `db_score` VALUES (150, '28', 'A学生', 38, 31, 65.0, 3.2);
+INSERT INTO `db_score` VALUES (151, '28', 'A学生', 39, 31, 85.0, 4.2);
+INSERT INTO `db_score` VALUES (152, '28', 'A学生', 40, 30, 45.0, 2.2);
+INSERT INTO `db_score` VALUES (153, '28', 'A学生', 41, 30, 85.0, 4.2);
+INSERT INTO `db_score` VALUES (154, '28', 'A学生', 42, 20, 62.0, 3.1);
+INSERT INTO `db_score` VALUES (155, '29', 'B学生', 38, 31, 74.0, 3.7);
+INSERT INTO `db_score` VALUES (156, '29', 'B学生', 39, 31, 63.0, 3.2);
+INSERT INTO `db_score` VALUES (157, '29', 'B学生', 40, 30, 85.0, 4.2);
+INSERT INTO `db_score` VALUES (158, '29', 'B学生', 41, 30, 76.0, 3.8);
+INSERT INTO `db_score` VALUES (159, '29', 'B学生', 42, 20, 96.0, 4.8);
+INSERT INTO `db_score` VALUES (160, '30', 'C学生', 38, 31, 85.0, 4.2);
+INSERT INTO `db_score` VALUES (161, '30', 'C学生', 39, 31, 96.0, 4.8);
+INSERT INTO `db_score` VALUES (162, '30', 'C学生', 40, 30, 75.0, 3.8);
+INSERT INTO `db_score` VALUES (163, '30', 'C学生', 41, 30, 65.0, 3.2);
+INSERT INTO `db_score` VALUES (164, '30', 'C学生', 42, 20, 71.0, 3.6);
+INSERT INTO `db_score` VALUES (165, '31', 'D学生', 43, 28, 82.0, 4.1);
+INSERT INTO `db_score` VALUES (166, '31', 'D学生', 44, 21, 96.0, 4.8);
+INSERT INTO `db_score` VALUES (167, '31', 'D学生', 45, 23, 72.0, 3.6);
+INSERT INTO `db_score` VALUES (168, '31', 'D学生', 46, 21, 96.0, 4.8);
+INSERT INTO `db_score` VALUES (169, '31', 'D学生', 47, 28, 85.0, 4.2);
+INSERT INTO `db_score` VALUES (170, '32', 'E学生', 43, 28, 43.0, 2.1);
+INSERT INTO `db_score` VALUES (171, '32', 'E学生', 44, 21, 63.0, 3.2);
+INSERT INTO `db_score` VALUES (172, '32', 'E学生', 45, 23, 60.0, 3.0);
+INSERT INTO `db_score` VALUES (173, '32', 'E学生', 46, 21, 75.0, 3.8);
+INSERT INTO `db_score` VALUES (174, '32', 'E学生', 47, 28, 95.0, 4.8);
+INSERT INTO `db_score` VALUES (175, '33', 'F学生', 43, 28, 45.0, 2.2);
+INSERT INTO `db_score` VALUES (176, '33', 'F学生', 44, 21, 65.0, 3.2);
+INSERT INTO `db_score` VALUES (177, '33', 'F学生', 45, 23, 85.0, 4.2);
+INSERT INTO `db_score` VALUES (178, '33', 'F学生', 46, 21, 35.0, 1.8);
+INSERT INTO `db_score` VALUES (179, '33', 'F学生', 47, 28, 45.0, 2.2);
+INSERT INTO `db_score` VALUES (180, '34', 'AA学生', 48, 25, 87.0, 4.4);
+INSERT INTO `db_score` VALUES (181, '34', 'AA学生', 49, 31, 96.0, 4.8);
+INSERT INTO `db_score` VALUES (182, '34', 'AA学生', 50, 15, 65.0, 3.2);
+INSERT INTO `db_score` VALUES (183, '34', 'AA学生', 51, 30, 48.0, 2.4);
+INSERT INTO `db_score` VALUES (184, '34', 'AA学生', 52, 30, 75.0, 3.8);
+INSERT INTO `db_score` VALUES (185, '35', 'BB学生', 48, 25, 95.0, 4.8);
+INSERT INTO `db_score` VALUES (186, '35', 'BB学生', 49, 31, 85.0, 4.2);
+INSERT INTO `db_score` VALUES (187, '35', 'BB学生', 50, 15, 47.0, 2.4);
+INSERT INTO `db_score` VALUES (188, '35', 'BB学生', 51, 30, 85.0, 4.2);
+INSERT INTO `db_score` VALUES (189, '35', 'BB学生', 52, 30, 65.0, 3.2);
+INSERT INTO `db_score` VALUES (190, '36', 'BB学生', 48, 25, 95.0, 4.8);
+INSERT INTO `db_score` VALUES (191, '36', 'BB学生', 49, 31, 75.0, 3.8);
+INSERT INTO `db_score` VALUES (192, '36', 'BB学生', 50, 15, 65.0, 3.2);
+INSERT INTO `db_score` VALUES (193, '36', 'BB学生', 51, 30, 95.0, 4.8);
+INSERT INTO `db_score` VALUES (194, '36', 'BB学生', 52, 30, 47.0, 2.4);
 
 -- ----------------------------
 -- Table structure for db_set
@@ -234,6 +389,41 @@ INSERT INTO `db_set` VALUES (13, 14, 5);
 INSERT INTO `db_set` VALUES (14, 15, 5);
 INSERT INTO `db_set` VALUES (15, 16, 5);
 INSERT INTO `db_set` VALUES (16, 17, 5);
+INSERT INTO `db_set` VALUES (17, 18, 6);
+INSERT INTO `db_set` VALUES (18, 19, 6);
+INSERT INTO `db_set` VALUES (19, 20, 6);
+INSERT INTO `db_set` VALUES (20, 21, 6);
+INSERT INTO `db_set` VALUES (21, 22, 6);
+INSERT INTO `db_set` VALUES (22, 23, 7);
+INSERT INTO `db_set` VALUES (23, 24, 7);
+INSERT INTO `db_set` VALUES (24, 25, 7);
+INSERT INTO `db_set` VALUES (25, 26, 7);
+INSERT INTO `db_set` VALUES (26, 27, 7);
+INSERT INTO `db_set` VALUES (27, 28, 8);
+INSERT INTO `db_set` VALUES (28, 29, 8);
+INSERT INTO `db_set` VALUES (29, 30, 8);
+INSERT INTO `db_set` VALUES (30, 31, 8);
+INSERT INTO `db_set` VALUES (31, 32, 8);
+INSERT INTO `db_set` VALUES (32, 33, 9);
+INSERT INTO `db_set` VALUES (33, 34, 9);
+INSERT INTO `db_set` VALUES (34, 35, 9);
+INSERT INTO `db_set` VALUES (35, 36, 9);
+INSERT INTO `db_set` VALUES (36, 37, 9);
+INSERT INTO `db_set` VALUES (37, 38, 10);
+INSERT INTO `db_set` VALUES (38, 39, 10);
+INSERT INTO `db_set` VALUES (39, 40, 10);
+INSERT INTO `db_set` VALUES (40, 41, 10);
+INSERT INTO `db_set` VALUES (41, 42, 10);
+INSERT INTO `db_set` VALUES (42, 43, 11);
+INSERT INTO `db_set` VALUES (43, 44, 11);
+INSERT INTO `db_set` VALUES (44, 45, 11);
+INSERT INTO `db_set` VALUES (45, 46, 11);
+INSERT INTO `db_set` VALUES (46, 47, 11);
+INSERT INTO `db_set` VALUES (47, 48, 12);
+INSERT INTO `db_set` VALUES (48, 49, 12);
+INSERT INTO `db_set` VALUES (49, 50, 12);
+INSERT INTO `db_set` VALUES (50, 51, 12);
+INSERT INTO `db_set` VALUES (51, 52, 12);
 
 -- ----------------------------
 -- Table structure for db_student
@@ -245,9 +435,9 @@ CREATE TABLE `db_student`  (
   `stu_name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '学生姓名',
   `cls_id` int NOT NULL COMMENT '班级id',
   `stu_gender` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '性别',
-  `stu_phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '电话',
+  `stu_phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '电话',
   `stu_avg` float(5, 1) UNSIGNED NULL DEFAULT NULL COMMENT '平均绩点',
-  `stu_address` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '生源地',
+  `stu_address` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '生源地',
   PRIMARY KEY (`stu_id`) USING BTREE,
   INDEX `db_stu_cls`(`cls_id`) USING BTREE,
   CONSTRAINT `db_stu_cls` FOREIGN KEY (`cls_id`) REFERENCES `db_class` (`cls_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -266,6 +456,31 @@ INSERT INTO `db_student` VALUES (8, '2220202', '学生G', 5, '1', '1234567', 3.5
 INSERT INTO `db_student` VALUES (9, '2220203', '学生H', 5, '0', '123456', 4.2, '广东');
 INSERT INTO `db_student` VALUES (10, '2220204', '学生I', 5, '0', '123456', 4.0, '福建');
 INSERT INTO `db_student` VALUES (11, '2220205', '学生J', 5, '0', '123456', 3.2, '福建');
+INSERT INTO `db_student` VALUES (12, '2220301', '学生AA', 6, '0', '123456', 3.6, '广东');
+INSERT INTO `db_student` VALUES (13, '2220302', '学生BB', 6, '0', '123456', 4.1, '广东');
+INSERT INTO `db_student` VALUES (14, '2220303', '学生CC', 6, '0', '123456', 3.6, '广东');
+INSERT INTO `db_student` VALUES (15, '2220304', '学生DD', 6, '1', '123456', 3.1, '广东');
+INSERT INTO `db_student` VALUES (16, '2220305', '学生EE', 6, '1', '123456', 3.9, '广东');
+INSERT INTO `db_student` VALUES (17, '2220406', '学生FF', 7, '1', '123456', 3.6, '广东');
+INSERT INTO `db_student` VALUES (18, '2220407', '学生GG', 7, '0', '123456', 3.8, '广东');
+INSERT INTO `db_student` VALUES (19, '2220408', '学生HH', 7, '2', '123456', 3.5, '福建');
+INSERT INTO `db_student` VALUES (20, '2220409', '学生II', 7, '0', '123456', 3.9, '广西');
+INSERT INTO `db_student` VALUES (21, '2220410', '学生JJ', 7, '1', '123456', 3.8, '山东');
+INSERT INTO `db_student` VALUES (22, '2220501', '学生AAA', 8, '0', '123456', 3.4, '广东');
+INSERT INTO `db_student` VALUES (23, '2220502', '学生BBB', 8, '1', '122345', 3.9, '广东');
+INSERT INTO `db_student` VALUES (24, '2220503', '学生CCC', 8, '0', '123456', 3.6, '广东');
+INSERT INTO `db_student` VALUES (25, '2220601', '学生A', 9, '1', '123456', 3.6, '广东');
+INSERT INTO `db_student` VALUES (26, '2220602', '学生B', 9, '0', '123456', 3.9, '广东');
+INSERT INTO `db_student` VALUES (27, '2220603', '学生C', 9, '1', '123456', 3.1, '广东');
+INSERT INTO `db_student` VALUES (28, '2220701', 'A学生', 10, '1', '123456', 3.4, '广东');
+INSERT INTO `db_student` VALUES (29, '2220702', 'B学生', 10, '0', '123456', 3.9, '广东');
+INSERT INTO `db_student` VALUES (30, '2220703', 'C学生', 10, '1', '123456', 3.9, '广东');
+INSERT INTO `db_student` VALUES (31, '2220801', 'D学生', 11, '0', '123456', 4.3, '广东');
+INSERT INTO `db_student` VALUES (32, '2220802', 'E学生', 11, '1', '123456', 3.4, '广东');
+INSERT INTO `db_student` VALUES (33, '2220803', 'F学生', 11, '0', '123456', 2.7, '广东');
+INSERT INTO `db_student` VALUES (34, '2220901', 'AA学生', 12, '1', '123456', 3.7, '广东');
+INSERT INTO `db_student` VALUES (35, '2220902', 'BB学生', 12, '0', '123456', 3.8, '广东');
+INSERT INTO `db_student` VALUES (36, '2220903', 'BB学生', 12, '1', '123456', 3.8, '广东');
 
 -- ----------------------------
 -- Table structure for db_teacher
@@ -943,6 +1158,8 @@ INSERT INTO `sys_logininfor` VALUES (178, 'teacherA', '127.0.0.1', '内网IP', '
 INSERT INTO `sys_logininfor` VALUES (179, 'teacherA', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '密码输入错误2次', '2023-09-13 20:50:42');
 INSERT INTO `sys_logininfor` VALUES (180, 'teacherA', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '1', '用户不存在/密码错误', '2023-09-13 20:50:42');
 INSERT INTO `sys_logininfor` VALUES (181, 'teacherA', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-13 20:51:02');
+INSERT INTO `sys_logininfor` VALUES (182, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-13 22:18:18');
+INSERT INTO `sys_logininfor` VALUES (183, 'admin', '127.0.0.1', '内网IP', 'Chrome 11', 'Windows 10', '0', '登录成功', '2023-09-14 08:44:46');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -1428,6 +1645,82 @@ INSERT INTO `sys_oper_log` VALUES (355, '菜单管理', 1, 'com.ruoyi.web.contro
 INSERT INTO `sys_oper_log` VALUES (356, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createBy\":\"admin\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuName\":\"教师数量\",\"menuType\":\"F\",\"orderNum\":6,\"params\":{},\"parentId\":2019,\"perms\":\"student:teacher:selectcount\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 20:48:11', 169);
 INSERT INTO `sys_oper_log` VALUES (357, '菜单管理', 1, 'com.ruoyi.web.controller.system.SysMenuController.add()', 'POST', 1, 'admin', NULL, '/system/menu', '127.0.0.1', '内网IP', '{\"children\":[],\"createBy\":\"admin\",\"isCache\":\"0\",\"isFrame\":\"1\",\"menuName\":\"专业数量\",\"menuType\":\"F\",\"orderNum\":6,\"params\":{},\"parentId\":2007,\"perms\":\"student:major:selectcount\",\"status\":\"0\",\"visible\":\"0\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 20:48:55', 149);
 INSERT INTO `sys_oper_log` VALUES (358, '角色管理', 2, 'com.ruoyi.web.controller.system.SysRoleController.edit()', 'PUT', 1, 'admin', NULL, '/system/role', '127.0.0.1', '内网IP', '{\"admin\":false,\"createTime\":\"2023-09-13 17:10:23\",\"dataScope\":\"1\",\"delFlag\":\"0\",\"deptCheckStrictly\":true,\"flag\":false,\"menuCheckStrictly\":true,\"menuIds\":[2000,2001,2007,2019,2025,2031,2037,2043,2049,2002,2006,2056,2008,2012,2059,2020,2024,2058,2026,2030,2032,2036,2038,2042,2044,2048,2057,2050,2052,2054,2055],\"params\":{},\"roleId\":100,\"roleKey\":\"teacher\",\"roleName\":\"老师\",\"roleSort\":3,\"status\":\"0\",\"updateBy\":\"admin\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 20:50:00', 367);
+INSERT INTO `sys_oper_log` VALUES (359, '开发管理', 1, 'com.ruoyi.student.controller.DbSetController.add()', 'POST', 1, 'admin', NULL, '/student/set', '127.0.0.1', '内网IP', '{\"couId\":18,\"majId\":6,\"params\":{},\"setId\":17}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 22:46:48', 191);
+INSERT INTO `sys_oper_log` VALUES (360, '开发管理', 1, 'com.ruoyi.student.controller.DbSetController.add()', 'POST', 1, 'admin', NULL, '/student/set', '127.0.0.1', '内网IP', '{\"couId\":19,\"majId\":6,\"params\":{},\"setId\":18}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 22:47:01', 167);
+INSERT INTO `sys_oper_log` VALUES (361, '开发管理', 1, 'com.ruoyi.student.controller.DbSetController.add()', 'POST', 1, 'admin', NULL, '/student/set', '127.0.0.1', '内网IP', '{\"couId\":20,\"majId\":6,\"params\":{},\"setId\":19}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 22:47:11', 144);
+INSERT INTO `sys_oper_log` VALUES (362, '开发管理', 1, 'com.ruoyi.student.controller.DbSetController.add()', 'POST', 1, 'admin', NULL, '/student/set', '127.0.0.1', '内网IP', '{\"couId\":21,\"majId\":6,\"params\":{},\"setId\":20}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 22:47:31', 183);
+INSERT INTO `sys_oper_log` VALUES (363, '开发管理', 1, 'com.ruoyi.student.controller.DbSetController.add()', 'POST', 1, 'admin', NULL, '/student/set', '127.0.0.1', '内网IP', '{\"couId\":22,\"majId\":6,\"params\":{},\"setId\":21}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 22:47:41', 136);
+INSERT INTO `sys_oper_log` VALUES (364, '学生管理', 1, 'com.ruoyi.student.controller.DbStudentController.add()', 'POST', 1, 'admin', NULL, '/student/student', '127.0.0.1', '内网IP', '{\"clsId\":6,\"params\":{},\"stuAddress\":\"广东\",\"stuGender\":\"0\",\"stuId\":12,\"stuName\":\"学生AA\",\"stuNumber\":\"2220301\",\"stuPhone\":\"123456\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 22:48:28', 180);
+INSERT INTO `sys_oper_log` VALUES (365, '学生管理', 1, 'com.ruoyi.student.controller.DbStudentController.add()', 'POST', 1, 'admin', NULL, '/student/student', '127.0.0.1', '内网IP', '{\"clsId\":6,\"params\":{},\"stuAddress\":\"广东\",\"stuGender\":\"0\",\"stuId\":13,\"stuName\":\"学生BB\",\"stuNumber\":\"2220302\",\"stuPhone\":\"123456\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 22:49:04', 138);
+INSERT INTO `sys_oper_log` VALUES (366, '学生管理', 1, 'com.ruoyi.student.controller.DbStudentController.add()', 'POST', 1, 'admin', NULL, '/student/student', '127.0.0.1', '内网IP', '{\"clsId\":6,\"params\":{},\"stuAddress\":\"广东\",\"stuGender\":\"0\",\"stuId\":14,\"stuName\":\"学生CC\",\"stuNumber\":\"2220303\",\"stuPhone\":\"123456\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 22:49:30', 118);
+INSERT INTO `sys_oper_log` VALUES (367, '学生管理', 1, 'com.ruoyi.student.controller.DbStudentController.add()', 'POST', 1, 'admin', NULL, '/student/student', '127.0.0.1', '内网IP', '{\"clsId\":6,\"params\":{},\"stuAddress\":\"广东\",\"stuGender\":\"1\",\"stuId\":15,\"stuName\":\"学生DD\",\"stuNumber\":\"2220304\",\"stuPhone\":\"123456\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 22:49:51', 147);
+INSERT INTO `sys_oper_log` VALUES (368, '学生管理', 1, 'com.ruoyi.student.controller.DbStudentController.add()', 'POST', 1, 'admin', NULL, '/student/student', '127.0.0.1', '内网IP', '{\"clsId\":6,\"params\":{},\"stuAddress\":\"广东\",\"stuGender\":\"1\",\"stuId\":16,\"stuName\":\"学生EE\",\"stuNumber\":\"2220305\",\"stuPhone\":\"123456\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 22:50:14', 174);
+INSERT INTO `sys_oper_log` VALUES (369, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"高等数学\",\"params\":{},\"scoId\":70,\"score\":35,\"stuName\":\"学生AA\",\"stuNumber\":\"2220301\",\"teaName\":\"教师A\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 22:59:10', 156);
+INSERT INTO `sys_oper_log` VALUES (370, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"高等数学\",\"params\":{},\"scoId\":75,\"score\":75,\"stuName\":\"学生BB\",\"stuNumber\":\"2220302\",\"teaName\":\"教师A\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 22:59:19', 175);
+INSERT INTO `sys_oper_log` VALUES (371, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"高等数学\",\"params\":{},\"scoId\":80,\"score\":96,\"stuName\":\"学生CC\",\"stuNumber\":\"2220303\",\"teaName\":\"教师A\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 22:59:27', 54);
+INSERT INTO `sys_oper_log` VALUES (372, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"高等数学\",\"params\":{},\"scoId\":85,\"score\":78,\"stuName\":\"学生DD\",\"stuNumber\":\"2220304\",\"teaName\":\"教师A\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 22:59:30', 178);
+INSERT INTO `sys_oper_log` VALUES (373, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"高等数学\",\"params\":{},\"scoId\":90,\"score\":74,\"stuName\":\"学生EE\",\"stuNumber\":\"2220305\",\"teaName\":\"教师A\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 22:59:35', 57);
+INSERT INTO `sys_oper_log` VALUES (374, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"电子技术基础\",\"params\":{},\"scoId\":71,\"score\":63,\"stuName\":\"学生AA\",\"stuNumber\":\"2220301\",\"teaName\":\"教师B\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 22:59:40', 147);
+INSERT INTO `sys_oper_log` VALUES (375, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"电子技术基础\",\"params\":{},\"scoId\":76,\"score\":96,\"stuName\":\"学生BB\",\"stuNumber\":\"2220302\",\"teaName\":\"教师B\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 22:59:44', 140);
+INSERT INTO `sys_oper_log` VALUES (376, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"电子技术基础\",\"params\":{},\"scoId\":81,\"score\":63,\"stuName\":\"学生CC\",\"stuNumber\":\"2220303\",\"teaName\":\"教师B\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:00:09', 99);
+INSERT INTO `sys_oper_log` VALUES (377, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"电子技术基础\",\"params\":{},\"scoId\":86,\"score\":41,\"stuName\":\"学生DD\",\"stuNumber\":\"2220304\",\"teaName\":\"教师B\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:00:14', 73);
+INSERT INTO `sys_oper_log` VALUES (378, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"电子技术基础\",\"params\":{},\"scoId\":91,\"score\":71,\"stuName\":\"学生EE\",\"stuNumber\":\"2220305\",\"teaName\":\"教师B\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:00:19', 89);
+INSERT INTO `sys_oper_log` VALUES (379, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"Linux程序设计\",\"params\":{},\"scoId\":72,\"score\":96,\"stuName\":\"学生AA\",\"stuNumber\":\"2220301\",\"teaName\":\"教师C\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:00:26', 52);
+INSERT INTO `sys_oper_log` VALUES (380, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"Linux程序设计\",\"params\":{},\"scoId\":77,\"score\":76,\"stuName\":\"学生BB\",\"stuNumber\":\"2220302\",\"teaName\":\"教师C\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:00:30', 141);
+INSERT INTO `sys_oper_log` VALUES (381, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"Linux程序设计\",\"params\":{},\"scoId\":82,\"score\":36,\"stuName\":\"学生CC\",\"stuNumber\":\"2220303\",\"teaName\":\"教师C\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:00:33', 110);
+INSERT INTO `sys_oper_log` VALUES (382, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"Linux程序设计\",\"params\":{},\"scoId\":87,\"score\":45,\"stuName\":\"学生DD\",\"stuNumber\":\"2220304\",\"teaName\":\"教师C\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:00:36', 94);
+INSERT INTO `sys_oper_log` VALUES (383, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"Linux程序设计\",\"params\":{},\"scoId\":92,\"score\":75,\"stuName\":\"学生EE\",\"stuNumber\":\"2220305\",\"teaName\":\"教师C\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:00:41', 121);
+INSERT INTO `sys_oper_log` VALUES (384, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"嵌入式系统基础\",\"params\":{},\"scoId\":73,\"score\":96,\"stuName\":\"学生AA\",\"stuNumber\":\"2220301\",\"teaName\":\"教师D\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:00:46', 128);
+INSERT INTO `sys_oper_log` VALUES (385, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"嵌入式系统基础\",\"params\":{},\"scoId\":78,\"score\":74,\"stuName\":\"学生BB\",\"stuNumber\":\"2220302\",\"teaName\":\"教师D\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:00:50', 170);
+INSERT INTO `sys_oper_log` VALUES (386, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"嵌入式系统基础\",\"params\":{},\"scoId\":83,\"score\":65,\"stuName\":\"学生CC\",\"stuNumber\":\"2220303\",\"teaName\":\"教师D\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:00:58', 73);
+INSERT INTO `sys_oper_log` VALUES (387, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"嵌入式系统基础\",\"params\":{},\"scoId\":88,\"score\":68,\"stuName\":\"学生DD\",\"stuNumber\":\"2220304\",\"teaName\":\"教师D\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:01:04', 156);
+INSERT INTO `sys_oper_log` VALUES (388, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"嵌入式系统基础\",\"params\":{},\"scoId\":93,\"score\":74,\"stuName\":\"学生EE\",\"stuNumber\":\"2220305\",\"teaName\":\"教师D\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:01:08', 53);
+INSERT INTO `sys_oper_log` VALUES (389, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"单片机原理与接口\",\"params\":{},\"scoId\":74,\"score\":63,\"stuName\":\"学生AA\",\"stuNumber\":\"2220301\",\"teaName\":\"教师E\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:01:14', 101);
+INSERT INTO `sys_oper_log` VALUES (390, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"单片机原理与接口\",\"params\":{},\"scoId\":79,\"score\":85,\"stuName\":\"学生BB\",\"stuNumber\":\"2220302\",\"teaName\":\"教师E\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:01:19', 75);
+INSERT INTO `sys_oper_log` VALUES (391, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"单片机原理与接口\",\"params\":{},\"scoId\":84,\"score\":96,\"stuName\":\"学生CC\",\"stuNumber\":\"2220303\",\"teaName\":\"教师E\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:01:23', 51);
+INSERT INTO `sys_oper_log` VALUES (392, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"单片机原理与接口\",\"params\":{},\"scoId\":89,\"score\":74,\"stuName\":\"学生DD\",\"stuNumber\":\"2220304\",\"teaName\":\"教师E\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:01:28', 146);
+INSERT INTO `sys_oper_log` VALUES (393, '成绩管理', 2, 'com.ruoyi.student.controller.DbScoreController.edit()', 'PUT', 1, 'admin', NULL, '/student/score', '127.0.0.1', '内网IP', '{\"couName\":\"单片机原理与接口\",\"params\":{},\"scoId\":94,\"score\":93,\"stuName\":\"学生EE\",\"stuNumber\":\"2220305\",\"teaName\":\"教师E\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:01:32', 76);
+INSERT INTO `sys_oper_log` VALUES (394, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":23,\"couName\":\"经济学基础\",\"couWay\":\"1\",\"params\":{},\"teaId\":17}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:07:26', 177);
+INSERT INTO `sys_oper_log` VALUES (395, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":24,\"couName\":\"经济数学基础\",\"couWay\":\"2\",\"params\":{},\"teaId\":18}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:08:06', 145);
+INSERT INTO `sys_oper_log` VALUES (396, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":25,\"couName\":\"会计学\",\"couWay\":\"1\",\"params\":{},\"teaId\":19}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:08:34', 147);
+INSERT INTO `sys_oper_log` VALUES (397, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":26,\"couName\":\"审计学\",\"couWay\":\"2\",\"params\":{},\"teaId\":23}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:08:54', 146);
+INSERT INTO `sys_oper_log` VALUES (398, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":27,\"couName\":\"公司理财\",\"couWay\":\"1\",\"params\":{},\"teaId\":24}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:09:29', 304);
+INSERT INTO `sys_oper_log` VALUES (399, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":28,\"couName\":\"管理学\",\"couWay\":\"2\",\"params\":{},\"teaId\":17}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:12:27', 160);
+INSERT INTO `sys_oper_log` VALUES (400, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":29,\"couName\":\"微观经济学\",\"couWay\":\"2\",\"params\":{},\"teaId\":24}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:13:02', 103);
+INSERT INTO `sys_oper_log` VALUES (401, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":30,\"couName\":\"宏观经济学\",\"couWay\":\"2\",\"params\":{},\"teaId\":25}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:13:19', 63);
+INSERT INTO `sys_oper_log` VALUES (402, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":31,\"couName\":\"运筹学\",\"couWay\":\"2\",\"params\":{},\"teaId\":21}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:13:40', 146);
+INSERT INTO `sys_oper_log` VALUES (403, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":32,\"couName\":\"消费心理学\",\"couWay\":\"1\",\"params\":{},\"teaId\":27}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:13:55', 76);
+INSERT INTO `sys_oper_log` VALUES (404, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":33,\"couName\":\"财务管理\",\"couWay\":\"2\",\"params\":{},\"teaId\":28}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:15:51', 150);
+INSERT INTO `sys_oper_log` VALUES (405, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":34,\"couName\":\"经济法\",\"couWay\":\"2\",\"params\":{},\"teaId\":32}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:16:08', 149);
+INSERT INTO `sys_oper_log` VALUES (406, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":35,\"couName\":\"人力资源管理\",\"couWay\":\"1\",\"params\":{},\"teaId\":30}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:16:45', 168);
+INSERT INTO `sys_oper_log` VALUES (407, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":36,\"couName\":\"经营管理\",\"couWay\":\"2\",\"params\":{},\"teaId\":28}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:17:12', 77);
+INSERT INTO `sys_oper_log` VALUES (408, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":37,\"couName\":\"会计实务\",\"couWay\":\"1\",\"params\":{},\"teaId\":32}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:17:35', 218);
+INSERT INTO `sys_oper_log` VALUES (409, '开发管理', 1, 'com.ruoyi.student.controller.DbSetController.add()', 'POST', 1, 'admin', NULL, '/student/set', '127.0.0.1', '内网IP', '{\"couId\":23,\"majId\":7,\"params\":{},\"setId\":22}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:18:01', 156);
+INSERT INTO `sys_oper_log` VALUES (410, '开发管理', 1, 'com.ruoyi.student.controller.DbSetController.add()', 'POST', 1, 'admin', NULL, '/student/set', '127.0.0.1', '内网IP', '{\"couId\":24,\"majId\":7,\"params\":{},\"setId\":23}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:18:27', 95);
+INSERT INTO `sys_oper_log` VALUES (411, '开发管理', 1, 'com.ruoyi.student.controller.DbSetController.add()', 'POST', 1, 'admin', NULL, '/student/set', '127.0.0.1', '内网IP', '{\"couId\":27,\"majId\":8,\"params\":{},\"setId\":27}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:20:06', 145);
+INSERT INTO `sys_oper_log` VALUES (412, '开发管理', 2, 'com.ruoyi.student.controller.DbSetController.edit()', 'PUT', 1, 'admin', NULL, '/student/set', '127.0.0.1', '内网IP', '{\"couId\":28,\"couName\":\"公司理财\",\"majId\":8,\"majName\":\"市场营销\",\"params\":{},\"setId\":27}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:20:27', 175);
+INSERT INTO `sys_oper_log` VALUES (413, '开发管理', 1, 'com.ruoyi.student.controller.DbSetController.add()', 'POST', 1, 'admin', NULL, '/student/set', '127.0.0.1', '内网IP', '{\"couId\":33,\"majId\":9,\"params\":{},\"setId\":32}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:21:58', 56);
+INSERT INTO `sys_oper_log` VALUES (414, '学生管理', 1, 'com.ruoyi.student.controller.DbStudentController.add()', 'POST', 1, 'admin', NULL, '/student/student', '127.0.0.1', '内网IP', '{\"clsId\":7,\"params\":{},\"stuAddress\":\"广东\",\"stuGender\":\"1\",\"stuId\":17,\"stuName\":\"学生FF\",\"stuNumber\":\"2220406\",\"stuPhone\":\"123456\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:23:43', 152);
+INSERT INTO `sys_oper_log` VALUES (415, '学生管理', 1, 'com.ruoyi.student.controller.DbStudentController.add()', 'POST', 1, 'admin', NULL, '/student/student', '127.0.0.1', '内网IP', '{\"clsId\":8,\"params\":{},\"stuAddress\":\"广东\",\"stuGender\":\"0\",\"stuId\":22,\"stuName\":\"学生AAA\",\"stuNumber\":\"2220501\",\"stuPhone\":\"123456\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-13 23:27:10', 153);
+INSERT INTO `sys_oper_log` VALUES (416, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":38,\"couName\":\"营销策划\",\"couWay\":\"1\",\"params\":{},\"teaId\":31}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 08:49:03', 155);
+INSERT INTO `sys_oper_log` VALUES (417, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":39,\"couName\":\"网页配色\",\"couWay\":\"2\",\"params\":{},\"teaId\":31}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 08:49:18', 147);
+INSERT INTO `sys_oper_log` VALUES (418, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":40,\"couName\":\"电商管理务实\",\"couWay\":\"1\",\"params\":{},\"teaId\":30}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 08:49:41', 147);
+INSERT INTO `sys_oper_log` VALUES (419, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":41,\"couName\":\"国际贸易理论\",\"couWay\":\"1\",\"params\":{},\"teaId\":30}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 08:50:02', 144);
+INSERT INTO `sys_oper_log` VALUES (420, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":42,\"couName\":\"PS设计\",\"couWay\":\"2\",\"params\":{},\"teaId\":20}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 08:50:53', 160);
+INSERT INTO `sys_oper_log` VALUES (421, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":43,\"couName\":\"管理统计学\",\"couWay\":\"2\",\"params\":{},\"teaId\":28}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 08:52:07', 149);
+INSERT INTO `sys_oper_log` VALUES (422, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":44,\"couName\":\"物流运筹学\",\"couWay\":\"1\",\"params\":{},\"teaId\":21}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 08:52:26', 167);
+INSERT INTO `sys_oper_log` VALUES (423, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":45,\"couName\":\"采购与供应管理\",\"couWay\":\"2\",\"params\":{},\"teaId\":23}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 08:52:51', 152);
+INSERT INTO `sys_oper_log` VALUES (424, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":46,\"couName\":\"商品学概论\",\"couWay\":\"1\",\"params\":{},\"teaId\":21}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 08:53:15', 132);
+INSERT INTO `sys_oper_log` VALUES (425, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":47,\"couName\":\"港口物流\",\"couWay\":\"1\",\"params\":{},\"teaId\":28}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 08:53:32', 183);
+INSERT INTO `sys_oper_log` VALUES (426, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":48,\"couName\":\"计量经济学\",\"couWay\":\"1\",\"params\":{},\"teaId\":25}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 08:54:34', 150);
+INSERT INTO `sys_oper_log` VALUES (427, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":49,\"couName\":\"商务数据分析\",\"couWay\":\"2\",\"params\":{},\"teaId\":31}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 08:54:57', 170);
+INSERT INTO `sys_oper_log` VALUES (428, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":50,\"couName\":\"大数据基础设施\",\"couWay\":\"2\",\"params\":{},\"teaId\":15}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 08:55:20', 149);
+INSERT INTO `sys_oper_log` VALUES (429, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":51,\"couName\":\"数据库系统\",\"couWay\":\"1\",\"params\":{},\"teaId\":30}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 08:55:44', 151);
+INSERT INTO `sys_oper_log` VALUES (430, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":20,\"couId\":52,\"couName\":\"数据仓库与数据挖掘\",\"couWay\":\"2\",\"params\":{},\"teaId\":30}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 08:56:08', 143);
+INSERT INTO `sys_oper_log` VALUES (431, '课程管理', 1, 'com.ruoyi.student.controller.DbCourseController.add()', 'POST', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":4,\"couHour\":88,\"couId\":53,\"couName\":\"士大夫地方\",\"couWay\":\"2\",\"params\":{},\"teaId\":9}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 09:36:12', 166);
+INSERT INTO `sys_oper_log` VALUES (432, '课程管理', 3, 'com.ruoyi.student.controller.DbCourseController.remove()', 'DELETE', 1, 'admin', NULL, '/student/course/53', '127.0.0.1', '内网IP', '{}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 09:36:32', 109);
+INSERT INTO `sys_oper_log` VALUES (433, '课程管理', 2, 'com.ruoyi.student.controller.DbCourseController.edit()', 'PUT', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":3,\"couHour\":20,\"couId\":13,\"couName\":\"计算机网络\",\"couWay\":\"1\",\"params\":{},\"teaId\":14,\"teaName\":\"教师F\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 10:01:20', 105);
+INSERT INTO `sys_oper_log` VALUES (434, '课程管理', 2, 'com.ruoyi.student.controller.DbCourseController.edit()', 'PUT', 1, 'admin', NULL, '/student/course', '127.0.0.1', '内网IP', '{\"couCredit\":3,\"couHour\":20,\"couId\":13,\"couName\":\"计算机网络\",\"couWay\":\"2\",\"params\":{},\"teaId\":14,\"teaName\":\"教师F\"}', '{\"msg\":\"操作成功\",\"code\":200}', 0, NULL, '2023-09-14 10:01:28', 83);
 
 -- ----------------------------
 -- Table structure for sys_post
@@ -1675,7 +1968,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-09-13 20:06:29', 'admin', '2023-09-08 21:17:44', '', '2023-09-13 20:06:29', '管理员');
+INSERT INTO `sys_user` VALUES (1, 103, 'admin', '若依', '00', 'ry@163.com', '15888888888', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-09-14 08:44:47', 'admin', '2023-09-08 21:17:44', '', '2023-09-14 08:44:46', '管理员');
 INSERT INTO `sys_user` VALUES (2, 105, 'ry', '若依', '00', 'ry@qq.com', '15666666666', '1', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2023-09-08 21:17:44', 'admin', '2023-09-08 21:17:44', '', NULL, '测试员');
 INSERT INTO `sys_user` VALUES (100, NULL, 'studentA', 'studentA', '00', '', '', '0', '', '$2a$10$fmrg07mB5riGq7RQ.bhe8.jqng.a8yXiG4A7tPFxhFml59WVIFRze', '0', '0', '127.0.0.1', '2023-09-13 17:27:40', 'admin', '2023-09-13 17:12:45', 'admin', '2023-09-13 17:27:40', NULL);
 INSERT INTO `sys_user` VALUES (101, NULL, 'teacherA', 'TeacherA', '00', '', '', '0', '', '$2a$10$g6Usu6unntVURvLOPiV/Ye047hxHlY1El0unWNu1xsKwqmwrq9Ltq', '0', '0', '127.0.0.1', '2023-09-13 20:51:02', 'admin', '2023-09-13 17:13:09', 'admin', '2023-09-13 20:51:02', NULL);
