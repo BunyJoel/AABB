@@ -88,7 +88,7 @@
 
     <el-table v-loading="loading" :data="teacherList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="教师id" align="center" prop="teaId" />
+      <el-table-column label="教师编号" align="center" prop="teaId" />
       <el-table-column label="教师名称" align="center" prop="teaName" />
       <el-table-column label="性别" align="center" prop="teaGender">
         <template slot-scope="scope">

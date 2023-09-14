@@ -81,7 +81,7 @@
 
     <el-table v-loading="loading" :data="courseList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="课程id" align="center" prop="couId" />
+      <el-table-column label="课程编号" align="center" prop="couId" />
       <el-table-column label="课程名称" align="center" prop="couName" />
       <el-table-column label="授课老师" align="center" prop="teaName" />
       <el-table-column label="学分" align="center" prop="couCredit" />
